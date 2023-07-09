@@ -1,0 +1,10 @@
+name = "worldbuilder"
+version = "2.1"
+
+# [[actions]] # No actions
+
+[[events]]
+name = "change_scene"
+# And more schema information about the event
+# Propbably needs a custom datatype
+

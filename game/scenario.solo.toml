@@ -1,0 +1,86 @@
+# The "Solo Adventure" Scenario
+name = "Solo"
+description = "A campaign for yourself"
+
+[[players]]
+name = "Adventurer" 
+count = 1 
+
+[[players.io]]
+name = "inventory" 
+spec = "cards" 
+version = ">=1.2.3" 
+count = 5 
+features = { nfc = "required", indicator_lights = "optional" }
+
+[[players.io]]
+name = "spells" 
+spec = "cards" 
+version = ">=1.2.3" 
+count = 5 
+features = { nfc = "required", indicator_lights = "optional" }
+
+[[players.io]]
+name = "allies" 
+spec = "cards" 
+version = ">=1.2.3" 
+count = 5 
+features = { nfc = "required", indicator_lights = "optional" }
+
+[[players.io]]
+name = "action_pad" 
+spec = "button" 
+version = ">=1.2.3" 
+count = 4 
+optional = true
+
+[[players.playables]]
+name = "enemy_tokens"
+spec = "tokens" 
+version = ">0.3"
+count = 20
+features = { storage = "1024" }
+
+[[players.playables]]
+name = "champion"
+spec = "tokens" 
+version = ">0.3"
+count = 1
+features = { storage = "1024" }
+
+[[players.playables]]
+name = "inventory_deck" 
+spec = "rf.standard_spell_deck" 
+version = "=1.2"
+count = 1
+
+[[players.playables]]
+name = "spells" 
+spec = "rf.standard_spell_deck" 
+version = "=1.2"
+count = 1
+
+[[players.playables]]
+name = "allies" 
+spec = "rf.standard_creatures_deck" 
+version = "=1.2"
+count = 1
+
+[[players.io]]
+name = "dice_roller" 
+spec = "dice_roller" 
+version = ">=1.2.3" 
+count = 1 
+
+[[players.playables]]
+name = "d20"
+spec = "dice.d20" 
+version = ">0.3"
+count = 1
+
+[[players.playables]]
+name = "d6" 
+spec = "dice.d6" 
+version = "=1.2"
+count = 1
+

@@ -1,0 +1,24 @@
+name = "rf.dice_pad"
+version = "1.2.1"
+
+[titles]
+en = "Raven Fire Dice Pad"
+
+[descriptions]
+en = "The dice roller pad that comes with Sazi"
+
+[vendor]
+name = "rf.console"
+url = "http://rf.console"
+
+# This can read 4 tokens at a time
+# A "die" is just a multi-sided token. It reads the one thats "down"
+[features]
+token_count = "4"
+
+[[provides]]
+name = "dice_pad"
+spec = "https://rf.tech/specs/dice_pad.toml"
+version = "1.2.1"
+
+

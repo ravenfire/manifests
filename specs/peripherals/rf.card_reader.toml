@@ -1,0 +1,30 @@
+name = "card_reader"
+version = "1.2.1"
+
+[[features]]
+name = "rfid"
+description = "Support RFID"
+
+[[features]]
+name = "nfc"
+description = "Supports NFC"
+
+[[features]]
+name = "barcode"
+description = "Supports Barcodes"
+
+[[features]]
+name = "indicator"
+description = "Has a single indicator light for each card_slot, controlled by game"
+
+[[properties]]
+name = "card"
+type = "Playable"
+# mutable = false # defaults to non-mutable
+
+[[properties]]
+name = "indicator"
+type = "boolean"
+mutable = true # The game can control this one
+features = [ "indicator" ] # This property only exists if the "indicator" feature is enabled
+

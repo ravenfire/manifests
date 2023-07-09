@@ -1,0 +1,13 @@
+# These should really be singular
+name = "toggle_button"
+version = "2.1.5"
+
+[[features]]
+name = "light"
+description = "Do the buttons toggle a light on and off?"
+
+[[properties]]
+name = "active"
+type = "boolean"
+mutable = false
+
