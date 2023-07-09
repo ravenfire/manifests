@@ -1,0 +1,14 @@
+name = "screen"
+version = "2.0"
+
+#[[features]] # No additional features
+
+[[properties]]
+name = "playables"
+type = "Playable[]"
+# This also needs to communicate coordinate information
+
+[[input_streams]]
+name = "display"
+# This is a custom stream going into the screen
+

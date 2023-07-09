@@ -1,0 +1,10 @@
+name = "Raven Fire Screen"
+description = "One of four touch screens"
+version = "2.0"
+vendor = "rf.console"
+
+[[provides]]
+name = "display"
+spec = "playable_display"
+version = "2.1"
+# defaults to no features and count of 1
