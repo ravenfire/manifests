@@ -7,4 +7,8 @@ edition = "2021"
 
 [dependencies]
 peripheral = { git = "ssh://git@github.com/ravenfire/peripheral.git" }
+game = { git = "ssh://git@github.com/ravenfire/game.git" }
 common = { git = "ssh://git@github.com/ravenfire/common.git" }
+
+[build-dependencies]
+walkdir = "2.3.3"
