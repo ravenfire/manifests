@@ -6,3 +6,5 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+peripheral = { git = "ssh://git@github.com/ravenfire/peripheral.git" }
+common = { git = "ssh://git@github.com/ravenfire/common.git" }
