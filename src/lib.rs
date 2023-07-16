@@ -1,10 +1,7 @@
 pub mod generated_manifests;
 use std::{env, path::PathBuf};
 
-use common::{
-    tracing::info,
-    traits::{DeserializationError, Tomlable},
-};
+use common::traits::{DeserializationError, Tomlable};
 use game::manifest::GameManifest;
 use generated_manifests::load;
 use peripheral::manifest::PeripheralManifest;
@@ -15,25 +12,19 @@ fn get_crate_path() -> PathBuf {
 
 pub struct Fixtures {}
 
+// @todo: This needs to be able to return both the built peripheral and the raw toml
 impl Fixtures {
     pub fn peripheral(key: &str) -> Result<PeripheralManifest, DeserializationError> {
-        // watertribe.card_reader
-        // examples/watertribe.card_reader/watertribe.card_reader.lock.toml
-
         let file_name = format!("examples/peripherals/{key}/{key}.lock.toml");
-
-        info!("{file_name}");
-
-        let toml = load(&file_name).unwrap();
+        let toml = load(&file_name).expect(&format!("Could not find file: {}", file_name));
 
         PeripheralManifest::from_toml(toml)
     }
 
     pub fn game(key: &str) -> Result<GameManifest, DeserializationError> {
-        let path = get_crate_path()
-            .join("games")
-            .join(key)
-            .join("/game.lock.toml");
-        GameManifest::from_toml_file(path)
+        let file_name = format!("examples/games/{key}/game.lock.toml");
+        let toml = load(&file_name).unwrap();
+
+        GameManifest::from_toml(toml)
     }
 }
