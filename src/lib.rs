@@ -1,15 +1,12 @@
 pub mod generated_manifests;
-use std::{env, path::PathBuf};
 
 use common::traits::{DeserializationError, Tomlable};
 use game::manifest::GameManifest;
 use generated_manifests::load;
 use peripheral::manifest::PeripheralManifest;
 
-fn get_crate_path() -> PathBuf {
-    env::var("CARGO_MANIFEST_DIR").map(PathBuf::from).unwrap()
-}
-
+// I think this should be a trait on the manifests instead:
+// PeripheralManifest::from_fixture(whatever.whatever).unwrap();
 pub struct Fixtures {}
 
 // @todo: This needs to be able to return both the built peripheral and the raw toml
