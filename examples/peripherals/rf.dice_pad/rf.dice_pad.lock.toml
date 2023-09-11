@@ -17,7 +17,7 @@ url = "http://rf.console"
 token_count = "4"
 
 [[provides]]
-name = "dice_pad"
+name = "dice_pad" # The peripheral can name it whatever they like
 spec = "https://rf.tech/specs/dice_pad.toml"
 version = "1.2.1"
 
