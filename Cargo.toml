@@ -1,14 +1,13 @@
 [package]
 name = "manifests"
-version = "0.1.0"
+version = "0.3.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-peripheral = { git = "ssh://git@github.com/ravenfire/peripheral.git" }
-game = { git = "ssh://git@github.com/ravenfire/game.git" }
-common = { git = "ssh://git@github.com/ravenfire/common.git" }
 
 [build-dependencies]
 walkdir = "2.3.3"
+getset = "0.1.2"
+common = { git = "ssh://git@github.com/ravenfire/common.git" }
