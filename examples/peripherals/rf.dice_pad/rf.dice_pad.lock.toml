@@ -1,5 +1,6 @@
 name = "rf.dice_pad"
 version = "1.2.1"
+uuid = "18ijad8u12kfa8da8a"
 
 [titles]
 en = "Raven Fire Dice Pad"
