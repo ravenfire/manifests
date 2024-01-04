@@ -1,14 +1,13 @@
 use std::collections::HashMap;
 
-use getset::{Getters, MutGetters, Setters};
-use serde::{Deserialize, Serialize};
-
+use crate::LanguageMap;
+use crate::{Range, Vendor};
 use common::data::ValidKey;
 use common::macros::{Jsonable, Streamable, Tomlable};
-use common::manifests::LanguageMap;
-use common::manifests::{Range, Vendor};
 use common::semver::{Version, VersionReq};
+use common::serde::{Deserialize, Serialize};
 use common::url::Url;
+use getset::{Getters, MutGetters, Setters};
 
 #[derive(
     Tomlable, Jsonable, Streamable, Debug, Serialize, Deserialize, Getters, Setters, MutGetters,

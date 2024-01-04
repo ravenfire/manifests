@@ -6,14 +6,25 @@ use serde::{Deserialize, Serialize};
 use common::{
     data::ValidKey,
     macros::{Jsonable, Streamable, Tomlable},
-    manifests::LanguageMap,
-    manifests::Vendor,
     semver::Version,
     toml::Value,
     url::Url,
 };
 
-#[derive(Tomlable, Jsonable, Streamable, Debug, Serialize, Deserialize, Getters, Setters, Clone, PartialEq, )]
+use crate::{LanguageMap, Vendor};
+
+#[derive(
+    Tomlable,
+    Jsonable,
+    Streamable,
+    Debug,
+    Serialize,
+    Deserialize,
+    Getters,
+    Setters,
+    Clone,
+    PartialEq,
+)]
 #[getset(get = "pub", set = "pub")]
 pub struct PeripheralManifest {
     /// The unique identifier for the peripheral
@@ -57,7 +68,18 @@ impl PeripheralManifest {
     }
 }
 
-#[derive(Tomlable, Jsonable, Streamable, Debug, Serialize, Deserialize, Getters, Setters, Clone, PartialEq, )]
+#[derive(
+    Tomlable,
+    Jsonable,
+    Streamable,
+    Debug,
+    Serialize,
+    Deserialize,
+    Getters,
+    Setters,
+    Clone,
+    PartialEq,
+)]
 #[getset(get = "pub", set = "pub")]
 pub struct Provider {
     name: ValidKey,

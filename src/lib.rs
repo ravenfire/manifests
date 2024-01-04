@@ -1,25 +1,24 @@
-
 //! Traits and common data types used for manifests.
 //!
 //! Manifests live in their various crates (peripherals, games, etc).
+pub mod examples;
 pub mod game;
 pub mod peripheral;
-pub mod examples;
 
 use std::collections::HashMap;
 use std::fmt::{Display, Formatter};
 use std::path::PathBuf;
 use std::str::FromStr;
 
+use common::isolang::Language;
 use getset::{Getters, Setters};
-use isolang::Language;
 use serde::{de, Deserialize, Deserializer, Serialize};
 
 use common::str;
 
-use crate::data::serialization::{Streamable as StreamableTrait, Tomlable as TomlableTrait};
-use crate::macros::{Jsonable, Streamable, Tomlable};
-use crate::url::Url;
+use common::data::serialization::{Streamable as StreamableTrait, Tomlable as TomlableTrait};
+use common::macros::{Jsonable, Streamable, Tomlable};
+use common::url::Url;
 
 /// Represents a key/value pair of a language code and a string.
 /// Used for storing localized strings. For things like names, descriptions, etc.
@@ -71,7 +70,18 @@ pub trait Manifest: TomlableTrait + StreamableTrait {
 }
 
 /// Represents a vendor who creates a game, peripheral, playable, or other component.
-#[derive(Debug,Serialize, Deserialize, PartialEq, Tomlable, Jsonable, Streamable, Getters, Setters, Clone)]
+#[derive(
+    Debug,
+    Serialize,
+    Deserialize,
+    PartialEq,
+    Tomlable,
+    Jsonable,
+    Streamable,
+    Getters,
+    Setters,
+    Clone,
+)]
 #[getset(get = "pub")]
 pub struct Vendor {
     name: String,
