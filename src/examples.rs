@@ -1,3 +1,6 @@
+use crate::peripheral::PeripheralManifest;
+use common::data::serialization::Tomlable;
+
 pub struct Peripheral {
     toml: String,
 }
@@ -5,7 +8,8 @@ pub struct Peripheral {
 impl Peripheral {
     pub fn rf_dice_pad() -> Peripheral {
         Self {
-            toml: include_str!("../examples/peripherals/rf.dice_pad/rf.dice_pad.lock.toml").to_string(),
+            toml: include_str!("../examples/peripherals/rf.dice_pad/rf.dice_pad.lock.toml")
+                .to_string(),
         }
     }
 
@@ -29,7 +33,7 @@ impl Peripheral {
             toml: include_str!(
                 "../examples/peripherals/watertribe.card_reader/watertribe.card_reader.lock.toml"
             )
-                .to_string(),
+            .to_string(),
         }
     }
 
