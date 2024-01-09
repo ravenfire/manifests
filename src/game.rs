@@ -10,21 +10,39 @@ use common::url::Url;
 use getset::{Getters, MutGetters, Setters};
 
 #[derive(
-    Tomlable, Jsonable, Streamable, Debug, Serialize, Deserialize, Getters, Setters, MutGetters,
+    Tomlable,
+    Jsonable,
+    Streamable,
+    Debug,
+    Serialize,
+    Deserialize,
+    Getters,
+    Setters,
+    MutGetters,
+    Clone,
 )]
 #[getset(get = "pub", set = "pub")]
 pub struct GameManifest {
     name: ValidKey,
-    titles: LanguageMap,
-    descriptions: LanguageMap,
-    vendor: Vendor,
-    version: Version,
-    url: Url,
+    // titles: LanguageMap,
+    // descriptions: LanguageMap,
+    // vendor: Vendor,
+    // version: Version,
+    // url: Url,
     scenarios: Vec<Scenario>,
 }
 
 #[derive(
-    Tomlable, Jsonable, Streamable, Debug, Serialize, Deserialize, Getters, Setters, MutGetters,
+    Tomlable,
+    Jsonable,
+    Streamable,
+    Debug,
+    Serialize,
+    Deserialize,
+    Getters,
+    Setters,
+    MutGetters,
+    Clone,
 )]
 #[getset(get = "pub", set = "pub")]
 pub struct Scenario {
@@ -35,7 +53,16 @@ pub struct Scenario {
 }
 
 #[derive(
-    Tomlable, Jsonable, Streamable, Debug, Serialize, Deserialize, Getters, Setters, MutGetters,
+    Tomlable,
+    Jsonable,
+    Streamable,
+    Debug,
+    Serialize,
+    Deserialize,
+    Getters,
+    Setters,
+    MutGetters,
+    Clone,
 )]
 #[getset(get = "pub", set = "pub")]
 pub struct ScenarioPlayer {
@@ -45,12 +72,22 @@ pub struct ScenarioPlayer {
     count: Range,
     #[serde(default = "Vec::default")]
     io: Vec<Requirement>,
+
     #[serde(default = "Vec::default")]
     playables: Vec<Requirement>,
 }
 
 #[derive(
-    Tomlable, Jsonable, Streamable, Debug, Serialize, Deserialize, Getters, Setters, MutGetters,
+    Tomlable,
+    Jsonable,
+    Streamable,
+    Debug,
+    Serialize,
+    Deserialize,
+    Getters,
+    Setters,
+    MutGetters,
+    Clone,
 )]
 #[getset(get = "pub", set = "pub")]
 pub struct Requirement {
@@ -61,16 +98,16 @@ pub struct Requirement {
     #[serde(default = "bool::default")]
     optional: bool,
     #[serde(default = "HashMap::default")]
-    features: HashMap<ValidKey, FeatureValue>,
+    features: HashMap<ValidKey, FeatureValue>, // TODO: HERE IS MY PROBLEM [start here]
     definition: Option<String>, // @todo: this will need to be much more robust
 }
 
-#[derive(Tomlable, Jsonable, Streamable, Debug, Serialize, Deserialize)]
+#[derive(Tomlable, Jsonable, Streamable, Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "snake_case", from = "String")]
 pub enum FeatureValue {
     Required,
     Optional,
-    Value(String), // TODO: [manifests, implementation] this should probably support payload values instead of just a string
+    // Value(String), // TODO: [manifests, implementation] this should probably support payload values instead of just a string
 }
 
 impl From<String> for FeatureValue {
@@ -78,7 +115,7 @@ impl From<String> for FeatureValue {
         return match s.as_str() {
             "required" => Self::Required,
             "optional" => Self::Optional,
-            _ => Self::Value(s),
+            _ => todo!("[errors] invalid feature value"),
         };
     }
 }

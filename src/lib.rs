@@ -4,8 +4,10 @@
 pub mod examples;
 pub mod game;
 pub mod peripheral;
-
+use serde::de::Visitor;
+use serde::Serializer;
 use std::collections::HashMap;
+use std::fmt;
 use std::fmt::{Display, Formatter};
 use std::path::PathBuf;
 use std::str::FromStr;
@@ -106,7 +108,7 @@ impl Vendor {
 /// Represents modifiers that can be applied to a range.
 ///
 /// Used to describe things like "there must be an even number of players"
-#[derive(Tomlable, Jsonable, Streamable, Debug, Serialize, Deserialize, PartialEq, Eq)]
+#[derive(Tomlable, Jsonable, Streamable, Debug, Serialize, Deserialize, PartialEq, Eq, Clone)]
 pub enum RangeModifier {
     Even,
     Odd,
@@ -116,12 +118,28 @@ pub enum RangeModifier {
 ///
 /// Ranges are inclusive, so 1-3 means 1, 2, and 3 are all valid.
 // TODO: [manifests] Right now any range must be a string, but we should allow a single integer to work
-#[derive(Tomlable, Jsonable, Streamable, Debug, Serialize, Getters, Setters, PartialEq, Eq)]
+#[derive(Tomlable, Jsonable, Streamable, Debug, Getters, Setters, PartialEq, Eq, Clone)]
 #[getset(get = "pub")]
 pub struct Range {
-    min: u8,
-    max: u8,
-    modifier: Option<RangeModifier>,
+    pub min: u8,
+    pub max: u8,
+    // modifier: Option<RangeModifier>,
+}
+
+impl fmt::Display for Range {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        // TODO: [implementation, incomplete] Should use the full format
+        write!(f, "1")
+    }
+}
+
+impl Serialize for Range {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: Serializer,
+    {
+        serializer.serialize_str(&self.to_string())
+    }
 }
 
 impl<'de> Deserialize<'de> for Range {
@@ -129,8 +147,24 @@ impl<'de> Deserialize<'de> for Range {
     where
         D: Deserializer<'de>,
     {
-        let s = String::deserialize(deserializer)?;
-        FromStr::from_str(&s).map_err(de::Error::custom)
+        struct RangeVisitor;
+
+        impl<'de> Visitor<'de> for RangeVisitor {
+            type Value = Range;
+
+            fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
+                formatter.write_str("a string representing a range")
+            }
+
+            fn visit_str<E>(self, value: &str) -> Result<Range, E>
+            where
+                E: de::Error,
+            {
+                value.parse::<Range>().map_err(E::custom)
+            }
+        }
+
+        deserializer.deserialize_str(RangeVisitor)
     }
 }
 
@@ -228,7 +262,8 @@ impl FromStr for Range {
             }
         }
 
-        Ok(Range { min, max, modifier })
+        // Ok(Range { min, max, modifier })
+        Ok(Range { min, max })
     }
 }
 

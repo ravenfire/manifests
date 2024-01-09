@@ -1,3 +1,4 @@
+use crate::game::GameManifest;
 use crate::peripheral::PeripheralManifest;
 use common::data::serialization::Tomlable;
 
@@ -43,5 +44,25 @@ impl Peripheral {
 
     pub fn build(&self) -> PeripheralManifest {
         PeripheralManifest::from_toml(self.toml()).expect("Failed to build PeripheralManifest")
+    }
+}
+
+pub struct Game {
+    toml: String,
+}
+
+impl crate::examples::Game {
+    pub fn spellbinder() -> crate::examples::Game {
+        Self {
+            toml: include_str!("../examples/games/spellbinder/game.lock.toml").to_string(),
+        }
+    }
+
+    pub fn toml(&self) -> &str {
+        &self.toml
+    }
+
+    pub fn build(&self) -> GameManifest {
+        GameManifest::from_toml(self.toml()).expect("Failed to build GameManifest")
     }
 }
