@@ -123,6 +123,7 @@ pub enum RangeModifier {
 pub struct Range {
     pub min: u8,
     pub max: u8,
+    // TODO: [incomplete] Implement range modifiers
     // modifier: Option<RangeModifier>,
 }
 
