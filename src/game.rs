@@ -1,13 +1,15 @@
 use std::collections::HashMap;
 
-use crate::LanguageMap;
-use crate::{Range, Vendor};
+use getset::{Getters, MutGetters, Setters};
+
 use common::data::ValidKey;
 use common::macros::{Jsonable, Streamable, Tomlable};
-use common::semver::{Version, VersionReq};
+use common::semver::VersionReq;
 use common::serde::{Deserialize, Serialize};
 use common::url::Url;
-use getset::{Getters, MutGetters, Setters};
+
+use crate::LanguageMap;
+use crate::Range;
 
 #[derive(
     Tomlable,
@@ -98,7 +100,8 @@ pub struct Requirement {
     #[serde(default = "bool::default")]
     optional: bool,
     #[serde(default = "HashMap::default")]
-    features: HashMap<ValidKey, FeatureValue>, // TODO: HERE IS MY PROBLEM [start here]
+    features: HashMap<ValidKey, FeatureValue>,
+    // TODO: HERE IS MY PROBLEM [start here]
     definition: Option<String>, // @todo: this will need to be much more robust
 }
 
