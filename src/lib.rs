@@ -22,6 +22,30 @@ use common::data::serialization::{Streamable as StreamableTrait, Tomlable as Tom
 use common::macros::{Jsonable, Streamable, Tomlable};
 use common::url::Url;
 
+// TODO: [implementation] Is this the best place for these
+/// The game defined name of a player's io
+/// such as "power_ups" to describe 5 card slots
+/// or "inventory" to describe a players set of rolled dice of swords
+pub type GameDefinedGroup = String;
+
+/// the peripheral-defined name for a group of specs it implements
+pub type PeripheralDefinedGroup = String;
+
+/// The map that connects the various pieces together
+/// The is saying that this part of the peripheral is owned by a specific player
+/// and is used by the game in this specific way
+pub type AssignmentsMap =
+    HashMap<PeripheralDefinedGroup, (PlayerType, PlayerIndex, GameDefinedGroup)>;
+
+/// A player type such as "GameMaster" or "Campaigner"
+/// @defined by the game manifest
+pub type PlayerType = String;
+
+/// The number of the player in a type. For instance the 3rd GameMaster or Campaigner 0
+pub type PlayerIndex = u8;
+
+// ^^ TODO: [implementation] Is this the best place for these
+
 /// Represents a key/value pair of a language code and a string.
 /// Used for storing localized strings. For things like names, descriptions, etc.
 pub type LanguageMap = HashMap<Language, String>;
