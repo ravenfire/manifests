@@ -7,7 +7,7 @@ name = "Adventurer"
 count = 1 
 
 [[players.io]]
-name = "inventory" 
+name = "inventory" # Game Defined Group
 spec = "cards" 
 version = ">=1.2.3" 
 count = 5 

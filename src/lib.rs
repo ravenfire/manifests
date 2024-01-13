@@ -4,6 +4,7 @@
 pub mod examples;
 pub mod game;
 pub mod peripheral;
+
 use serde::de::Visitor;
 use serde::Serializer;
 use std::collections::HashMap;
@@ -19,6 +20,7 @@ use serde::{de, Deserialize, Deserializer, Serialize};
 use common::str;
 
 use common::data::serialization::{Streamable as StreamableTrait, Tomlable as TomlableTrait};
+use common::data::ValidKey;
 use common::macros::{Jsonable, Streamable, Tomlable};
 use common::url::Url;
 
@@ -26,16 +28,16 @@ use common::url::Url;
 /// The game defined name of a player's io
 /// such as "power_ups" to describe 5 card slots
 /// or "inventory" to describe a players set of rolled dice of swords
-pub type GameDefinedGroup = String;
+pub type GameDefinedGroup = ValidKey;
 
 /// the peripheral-defined name for a group of specs it implements
-pub type PeripheralDefinedGroup = String;
+pub type PeripheralDefinedGroup = ValidKey;
 
 /// The map that connects the various pieces together
 /// The is saying that this part of the peripheral is owned by a specific player
 /// and is used by the game in this specific way
 pub type AssignmentsMap =
-    HashMap<PeripheralDefinedGroup, (PlayerType, PlayerIndex, GameDefinedGroup)>;
+    HashMap<PlayerIndex, HashMap<GameDefinedGroup, (u8, PeripheralDefinedGroup)>>;
 
 /// A player type such as "GameMaster" or "Campaigner"
 /// @defined by the game manifest

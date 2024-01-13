@@ -66,9 +66,10 @@ pub struct Scenario {
     MutGetters,
     Clone,
 )]
+// Analogous to PlayerType
 #[getset(get = "pub", set = "pub")]
 pub struct ScenarioPlayer {
-    name: ValidKey,
+    name: ValidKey, // PlayerType // TODO: [implementation] use consistent types
     titles: LanguageMap,
     descriptions: LanguageMap,
     count: Range,
@@ -96,7 +97,7 @@ pub struct Requirement {
     name: ValidKey,
     spec: Url,
     version: VersionReq,
-    count: Range,
+    count: u32, // TODO: Should this be a range?
     #[serde(default = "bool::default")]
     optional: bool,
     #[serde(default = "HashMap::default")]
