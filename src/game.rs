@@ -101,7 +101,6 @@ pub struct Requirement {
     optional: bool,
     #[serde(default = "HashMap::default")]
     features: HashMap<ValidKey, FeatureValue>,
-    // TODO: HERE IS MY PROBLEM [start here]
     definition: Option<String>, // @todo: this will need to be much more robust
 }
 
