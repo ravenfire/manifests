@@ -97,7 +97,7 @@ pub struct Requirement {
     name: ValidKey,
     spec: Url,
     version: VersionReq,
-    count: u32, // TODO: Should this be a range?
+    count: Range,
     #[serde(default = "bool::default")]
     optional: bool,
     #[serde(default = "HashMap::default")]

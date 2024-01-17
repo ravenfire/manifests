@@ -86,10 +86,10 @@ pub struct Provider {
     spec: Url,
     version: Version,
     #[serde(default = "default_count")]
-    count: u32,
+    count: u8,
 }
 
-fn default_count() -> u32 {
+fn default_count() -> u8 {
     1
 }
 

@@ -39,6 +39,15 @@ impl Peripheral {
         }
     }
 
+    pub fn xl_card_reader() -> Peripheral {
+        Self {
+            toml: include_str!(
+                "../examples/peripherals/watertribe.xl_card_reader/watertribe.xl_card_reader.lock.toml"
+            )
+                .to_string(),
+        }
+    }
+
     pub fn toml(&self) -> &str {
         &self.toml
     }
