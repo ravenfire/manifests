@@ -8,8 +8,8 @@ use common::semver::VersionReq;
 use common::serde::{Deserialize, Serialize};
 use common::url::Url;
 
+use crate::range::Range;
 use crate::LanguageMap;
-use crate::Range;
 
 #[derive(
     Tomlable,

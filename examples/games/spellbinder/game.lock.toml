@@ -33,7 +33,7 @@ es = "Una campaña con un Game Master que marca la historia"
 
 [[scenarios.players]]
 name = "GameMaster"
-count = "1"
+count = 1
 
 [scenarios.players.titles]
 en = "english"
@@ -47,26 +47,26 @@ es = "es desc"
 name = "power_ups"
 spec = "http://rf.tech/specs/cards.toml"
 version = ">=1.2.3"
-count = "5" # todo: This should be allowed to be a string
+count = 5
 features = { nfc = "required", indicators = "optional" }
 
 [[scenarios.players.io]]
 name = "world_builder"
 spec = "http://spellbinder-studios/spec/world_builder.toml"
 version = ">=1.2.3"
-count = "1"
+count = 1
 
 [[scenarios.players.playables]]
 name = "enemy_tokens"
 spec = "http://rf.tech/specs/playables/token.toml"
 version = ">0.3"
-count = "20"
+count = 20
 definition = "playables.enemies.toml"
 #features = { storage = "1024" } # todo: support this in the spec
 
 [[scenarios.players]]
 name = "Adventurer"
-count = "1+"
+count = "3+"
 
 [scenarios.players.titles]
 en = "english"
@@ -80,21 +80,21 @@ es = "es desc"
 name = "inventory"
 spec = "http://rf.tech/specs/cards"
 version = ">=1.2.3"
-count = "3"
+count = 3
 features = { nfc = "required", indicator_lights = "optional" }
 
 [[scenarios.players.io]]
 name = "action_pad"
 spec = "https://rf.tech/specs/toggle_botton.toml"
 version = ">=2"
-count = "4"
+count = 4
 optional = true
 
 [[scenarios.players.playables]]
 name = "champion"
 spec = "https://tokens"
 version = ">0.3"
-count = "1"
+count = 1
 #features = { storage = "1024" }
 definition = "playables.champion.toml"
 
@@ -102,13 +102,13 @@ definition = "playables.champion.toml"
 name = "inventory_deck"
 spec = "https://rf.standard_spell_deck"
 version = "=1.2"
-count = "1"
+count = 1
 definition = "playables.inventory.toml"
 
 # The Community
 [[scenarios.players]]
 name = "Community"
-count = "1" # this should be defaulted
+count = 1 # this should be defaulted
 
 # todo: a default for this, too
 [scenarios.players.titles]
@@ -123,19 +123,19 @@ es = "es desc"
 name = "dice_roller"
 spec = "https://rf.tech/specs/dice_pad.toml"
 version = ">=1.2"
-count = "1"
+count = 1
 
 [[scenarios.campaign.players.playables]]
 name = "d20"
 spec = "https://dice.d20"
 version = ">0.3"
-count = "1"
+count = 1
 definition = "standard"
 
 [[scenarios.campaign.players.playables]]
 name = "d6"
 spec = "https://dice.d6"
 version = "=1.2"
-count = "1"
+count = 1
 defined = "standard"
 

@@ -3,11 +3,12 @@ use std::fmt::{Display, Formatter};
 use std::str::FromStr;
 
 use getset::{Getters, Setters};
-use serde::de::Visitor;
 use serde::{de, Deserialize, Deserializer, Serialize, Serializer};
 
 use common::macros::{Jsonable, Streamable, Tomlable};
 use common::str;
+
+// use serde::de::Visitor;
 
 /// Represents modifiers that can be applied to a range.
 ///

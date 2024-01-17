@@ -1,6 +1,7 @@
+use common::data::serialization::Tomlable;
+
 use crate::game::GameManifest;
 use crate::peripheral::PeripheralManifest;
-use common::data::serialization::Tomlable;
 
 pub struct Peripheral {
     toml: String,
@@ -55,6 +56,12 @@ impl crate::examples::Game {
     pub fn spellbinder() -> crate::examples::Game {
         Self {
             toml: include_str!("../examples/games/spellbinder/game.lock.toml").to_string(),
+        }
+    }
+
+    pub fn tictactoe() -> crate::examples::Game {
+        Self {
+            toml: include_str!("../examples/games/tictactoe/game.lock.toml").to_string(),
         }
     }
 
