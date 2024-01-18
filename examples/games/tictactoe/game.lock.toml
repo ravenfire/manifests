@@ -73,4 +73,3 @@ name = "board"
 spec = "http://rf.tech/specs/screen.toml"
 version = ">=1.2.3"
 count = 1
-
