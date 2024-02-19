@@ -1,0 +1,123 @@
+{
+  "titles": {
+    "en": "Simple Battle Game"
+  },
+  "descriptions": {
+    "en": "A simple battle game with cards and dice"
+  },
+  "version": "9.8",
+  "url": "http://simple-battle.game",
+  "support": "http://simple-battle.game/support",
+  "vendor": {
+    "name": "Raven Fire Examples",
+    "url": "https://rf.com/"
+  },
+  "scenarios": [
+    {
+      "name": "beginners",
+      "titles": {
+        "en": "Beginners"
+      },
+      "descriptions": {
+        "en": "A simple game for beginners"
+      },
+      "players": [
+        {
+          "name": "champion",
+          "count": "2+[even]",
+          "titles": {
+            "en": "Champion"
+          },
+          "descriptions": {
+            "en": "The Champion"
+          },
+          "io": [
+            {
+              "name": "playfield_game_defined_group",
+              "spec": "http://rf.tech/specs/card.json",
+              "version": ">=1.2.3",
+              "count": "5"
+            },
+            {
+              "name": "enhancer_game_defined_group",
+              "spec": "http://rf.tech/specs/dice.json",
+              "version": "^4.0",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "name": "community",
+          "count": 1,
+          "titles": {
+            "en": "Community"
+          },
+          "descriptions": {
+            "en": "The Community"
+          },
+          "io": [
+            {
+              "name": "community_game_defined_group",
+              "spec": "http://rf.tech/specs/card.json",
+              "version": ">=1.2.3",
+              "count": "1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "beginners",
+      "titles": {
+        "en": "Beginners"
+      },
+      "descriptions": {
+        "en": "A simple game for beginners"
+      },
+      "players": [
+        {
+          "name": "champion",
+          "count": "2+[even]",
+          "titles": {
+            "en": "Champion"
+          },
+          "descriptions": {
+            "en": "The Champion"
+          },
+          "io": [
+            {
+              "name": "playfield_game_defined_group",
+              "spec": "http://rf.tech/specs/card.json",
+              "version": ">=1.2.3",
+              "count": "5"
+            },
+            {
+              "name": "enhancer_game_defined_group",
+              "spec": "http://rf.tech/specs/dice.json",
+              "version": "^4.0",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "name": "community",
+          "count": 1,
+          "titles": {
+            "en": "Community"
+          },
+          "descriptions": {
+            "en": "The Community"
+          },
+          "io": [
+            {
+              "name": "community_game_defined_group",
+              "spec": "http://rf.tech/specs/card.json",
+              "version": ">=1.2.3",
+              "count": "1"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "peripheral defined group",
+  "count": 1,
+  "spec": {
+    "url": "rf.com/specs/screen/screen.toml",
+    "version": "10.1.2-alpha"
+  }
+}

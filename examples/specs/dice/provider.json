@@ -1,0 +1,11 @@
+{
+  "name": "peripheral defined group",
+  "count": 1,
+  "spec": {
+    "url": "rf.com/specs/dice/dice.toml",
+    "version": "4.5.6",
+    "features": [
+      "d6"
+    ]
+  }
+}

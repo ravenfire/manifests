@@ -1,0 +1,25 @@
+{
+  "name": "rf.screen",
+  "version": "1.7.1",
+  "uuid": "1298yujhfsa8i1",
+  "titles": {
+    "en": "Touch Screen"
+  },
+  "descriptions": {
+    "en": "A touch screen display for playables as well"
+  },
+  "vendor": {
+    "name": "rf.console",
+    "url": "http://rf.console"
+  },
+  "provides": [
+    {
+      "name": "peripheral_defined_screen",
+      "count": 1,
+      "spec": {
+        "url": "http://electricjones.me/rf/specs/screen.json",
+        "version": "10.1.2-alpha"
+      }
+    }
+  ]
+}

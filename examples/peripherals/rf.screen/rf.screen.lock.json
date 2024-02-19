@@ -1,0 +1,68 @@
+{
+  "name": "rf.screen",
+  "version": "1.7.1",
+  "uuid": "1298yujhfsa8i1",
+  "titles": {
+    "en": "Touch Screen"
+  },
+  "descriptions": {
+    "en": "A touch screen display for playables as well"
+  },
+  "vendor": {
+    "name": "rf.console",
+    "url": "http://rf.console"
+  },
+  "provides": [
+    {
+      "name": "peripheral_defined_screen",
+      "count": 1,
+      "spec": {
+        "url": "http://electricjones.me/rf/specs/screen.toml",
+        "version": "10.1.2-alpha",
+        "vendor": "ravenfire",
+        "titles": {
+          "en": "Touch and Playable Screen"
+        },
+        "descriptions": {
+          "en": "The Screen that allows you to play playables and such"
+        },
+        "properties": [
+          {
+            "key": "playables",
+            "data_type": "Playable",
+            "collection": true,
+            "titles": {
+              "en": "Playables"
+            },
+            "descriptions": {
+              "en": "Playables currently on the screen"
+            },
+            "meta": [
+              {
+                "key": "position",
+                "data_type": "Coordinate2",
+                "titles": {
+                  "en": "XY Coordinate"
+                },
+                "descriptions": {
+                  "en": "The XY Coordinate of the Playable on the screen"
+                }
+              }
+            ]
+          },
+          {
+            "key": "touches",
+            "data_type": "Coordinate2",
+            "collection": true,
+            "titles": {
+              "en": "Touches"
+            },
+            "descriptions": {
+              "en": "Other (non playable) touches on the screen"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

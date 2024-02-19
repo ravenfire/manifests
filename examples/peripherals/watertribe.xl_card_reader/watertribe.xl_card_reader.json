@@ -1,0 +1,44 @@
+{
+  "version": "4.10",
+  "uuid": "1298yujhfsa8i1",
+  "titles": {
+    "en": "Water Tribe Card Reader and dice pad"
+  },
+  "descriptions": {
+    "en": "Card Reader with 10 slots and a dice reader."
+  },
+  "vendor": {
+    "name": "watertribe",
+    "url": "http://watertribe.com"
+  },
+  "url": "http://watertribe.tech/card_reader",
+  "support": "http://support.watertribe.com",
+  "provides": [
+    {
+      "name": "peripheral_defined_card_reader",
+      "count": 10,
+      "spec": {
+        "url": "https://rf.tech/specs/card.json",
+        "version": "1.2.3",
+        "features": [
+          "rfid",
+          "nfc",
+          "facing"
+        ]
+      }
+    },
+    {
+      "name": "peripheral_defined_dice_pad",
+      "count": 1,
+      "spec": {
+        "url": "http://electricjones.me/rf/specs/dice.json",
+        "version": "4.5.6",
+        "features": [
+          "d6",
+          "d10",
+          "d12"
+        ]
+      }
+    }
+  ]
+}

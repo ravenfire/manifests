@@ -1,0 +1,28 @@
+{
+  "name": "rf.dice_pad",
+  "version": "1.2.1",
+  "uuid": "18ijad8u12kfa8da8a",
+  "titles": {
+    "en": "Raven Fire Dice Pad"
+  },
+  "descriptions": {
+    "en": "The dice roller pad that comes with Sazi"
+  },
+  "vendor": {
+    "name": "rf.console",
+    "url": "http://rf.console"
+  },
+  "provides": [
+    {
+      "name": "peripheral_defined_dice_pad",
+      "count": 1,
+      "spec": {
+        "url": "http://electricjones.me/rf/specs/dice.json",
+        "version": "4.5.6",
+        "features": [
+          "d6"
+        ]
+      }
+    }
+  ]
+}

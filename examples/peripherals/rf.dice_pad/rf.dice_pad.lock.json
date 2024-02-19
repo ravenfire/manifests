@@ -1,0 +1,69 @@
+{
+  "name": "rf.dice_pad",
+  "version": "1.2.1",
+  "uuid": "18ijad8u12kfa8da8a",
+  "titles": {
+    "en": "Raven Fire Dice Pad"
+  },
+  "descriptions": {
+    "en": "The dice roller pad that comes with Sazi"
+  },
+  "vendor": {
+    "name": "rf.console",
+    "url": "http://rf.console"
+  },
+  "provides": [
+    {
+      "name": "peripheral_defined_dice_pad",
+      "count": 1,
+      "spec": {
+        "url": "http://electricjones.me/rf/specs/dice.json",
+        "version": "4.5.6",
+        "vendor": "ravenfire",
+        "titles": {
+          "en": "Dice Pad"
+        },
+        "descriptions": {
+          "en": "A place to roll dice"
+        },
+        "properties": [
+          {
+            "key": "total",
+            "data_type": "Integer",
+            "titles": {
+              "en": "Total"
+            },
+            "descriptions": {
+              "en": "Total current value rolled. 0 if no dice are present"
+            }
+          }
+        ],
+        "features": [
+          {
+            "key": "d6",
+            "titles": {
+              "en": "D6"
+            },
+            "descriptions": {
+              "en": "The Values of the D6 dice"
+            },
+            "default": false,
+            "properties": [
+              {
+                "key": "value",
+                "titles": {
+                  "en": "D6 Value"
+                },
+                "descriptions": {
+                  "en": "Value of the D6 Die, one value per collection element"
+                },
+                "data_type": "Integer",
+                "collection": true
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "name": "rf.card_reader",
+  "version": "2.18.1",
+  "uuid": "1298yujhfsa8i1",
+  "titles": {
+    "en": "Raven Fire Card Reader"
+  },
+  "descriptions": {
+    "en": "Card Reader with 5 slots, indicator lights, and a button pad."
+  },
+  "vendor": {
+    "name": "rf.console",
+    "url": "http://rf.console",
+    "email": "mwilson@electricjones.me"
+  },
+  "url": "http://rf.tech/peripherals/card_reader",
+  "support": "http://rf.tech/peripherals/card_reader/support",
+  "provides": [
+    {
+      "name": "peripheral_defined_card_reader",
+      "count": 5,
+      "spec": {
+        "url": "https://rf.tech/specs/card.json",
+        "version": "1.2.3",
+        "features": [
+          "rfid",
+          "nfc"
+        ]
+      }
+    }
+  ]
+}

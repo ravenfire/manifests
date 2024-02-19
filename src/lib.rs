@@ -10,7 +10,6 @@ use serde::{Deserialize, Serialize};
 
 use common::data::serialization::{Streamable as StreamableTrait, Tomlable as TomlableTrait};
 use common::data::ValidKey;
-use common::isolang::Language;
 use common::macros::{Jsonable, Streamable, Tomlable};
 use common::url::Url;
 
@@ -18,6 +17,7 @@ pub mod examples;
 pub mod game;
 pub mod peripheral;
 pub mod range;
+mod specs;
 
 // TODO: [implementation] Is this the best place for these
 /// The game defined name of a player's io
@@ -42,10 +42,6 @@ pub type PlayerType = String;
 pub type PlayerIndex = u8;
 
 // ^^ TODO: [implementation] Is this the best place for these
-
-/// Represents a key/value pair of a language code and a string.
-/// Used for storing localized strings. For things like names, descriptions, etc.
-pub type LanguageMap = HashMap<Language, String>;
 
 /// Trait for representing a manifest with serialization and streaming capabilities.
 ///

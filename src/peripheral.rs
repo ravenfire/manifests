@@ -3,14 +3,15 @@ use std::collections::HashMap;
 use getset::{Getters, Setters};
 use serde::{Deserialize, Serialize};
 
+use common::data::LanguageMap;
 use common::{
     data::ValidKey,
     macros::{Jsonable, Streamable, Tomlable},
     semver::Version,
     toml::Value,
-    url::Url,
 };
 
+use crate::specs::SpecReference;
 use crate::{LanguageMap, Vendor};
 
 #[derive(
@@ -83,38 +84,15 @@ impl PeripheralManifest {
 #[getset(get = "pub", set = "pub")]
 pub struct Provider {
     name: ValidKey,
-    spec: Url,
-    version: Version,
+    // Peripheral defined group
+    spec: SpecReference,
+    // TODO: START HERE -- This needs to be an enum Spec::Reference|Definition
     #[serde(default = "default_count")]
     count: u8,
 }
 
 fn default_count() -> u8 {
     1
-}
-
-// TODO: [restructure] May not be the best place for this to live
-#[derive(
-    Tomlable, Jsonable, Streamable, Debug, Serialize, Deserialize, Getters, Setters, Clone,
-)]
-#[getset(get = "pub", set = "pub")]
-pub struct Spec {
-    key: ValidKey,
-    url: Url,
-    titles: LanguageMap,
-    descriptions: LanguageMap,
-    version: Version,
-    features: Vec<Feature>,
-}
-
-#[derive(
-    Tomlable, Jsonable, Streamable, Debug, Serialize, Deserialize, Getters, Setters, Clone,
-)]
-#[getset(get = "pub", set = "pub")]
-pub struct Feature {
-    key: ValidKey,
-    titles: LanguageMap,
-    descriptions: LanguageMap,
 }
 
 #[cfg(test)]
