@@ -1,7 +1,21 @@
 {
-  "url": "http://electricjones.me/rf/specs/screen.toml",
+  "meta": {
+    "generated": "2024-02-19"
+  },
+  "url": "https://ravenfire.games/dev/specs/screen.json",
   "version": "10.1.2-alpha",
-  "vendor": "ravenfire",
+  "vendor": {
+    "name": "ravenfire",
+    "titles": {
+      "en": "Raven Fire"
+    },
+    "descriptions": {
+      "en": "Raven Fire"
+    },
+    "email": "vendor@ravenfire.games",
+    "url": "https://ravenfire.games",
+    "support": "https://ravenfire.games/dev/support"
+  },
   "titles": {
     "en": "Touch and Playable Screen"
   },

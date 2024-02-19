@@ -8,8 +8,7 @@
     "en": "Card Reader with 10 slots and a dice reader."
   },
   "vendor": {
-    "name": "watertribe",
-    "url": "http://watertribe.com"
+    "name": "watertribe"
   },
   "url": "http://watertribe.tech/card_reader",
   "support": "http://support.watertribe.com",
@@ -18,9 +17,23 @@
       "name": "peripheral_defined_card_reader",
       "count": 10,
       "spec": {
-        "url": "http://electricjones.me/rf/specs/card.toml",
+        "meta": {
+          "generated": "2024-02-19"
+        },
+        "url": "https://ravenfire.games/dev/specs/card.json",
         "version": "1.2.3",
-        "vendor": "ravenfire",
+        "vendor": {
+          "name": "ravenfire",
+          "titles": {
+            "en": "Raven Fire"
+          },
+          "descriptions": {
+            "en": "Raven Fire"
+          },
+          "email": "vendor@ravenfire.games",
+          "url": "https://ravenfire.games",
+          "support": "https://ravenfire.games/dev/support"
+        },
         "titles": {
           "en": "Card",
           "es": "Tarjeta"
@@ -54,8 +67,7 @@
             "descriptions": {
               "en": "A card with RFID",
               "es": "Una tarjeta con RFID"
-            },
-            "default": true
+            }
           },
           {
             "key": "nfc",
@@ -66,8 +78,7 @@
             "descriptions": {
               "en": "A card with NFC",
               "es": "Una tarjeta con NFC"
-            },
-            "default": false
+            }
           },
           {
             "key": "facing",
@@ -79,7 +90,6 @@
               "en": "The facing of the card",
               "es": "La orientación de la tarjeta"
             },
-            "default": false,
             "properties": [
               {
                 "key": "facing",
@@ -106,9 +116,23 @@
       "name": "peripheral_defined_dice_pad",
       "count": 1,
       "spec": {
-        "url": "http://electricjones.me/rf/specs/dice.json",
+        "meta": {
+          "generated": "2024-02-19"
+        },
+        "url": "https://ravenfire.games/dev/specs/dice.json",
         "version": "4.5.6",
-        "vendor": "ravenfire",
+        "vendor": {
+          "name": "ravenfire",
+          "titles": {
+            "en": "Raven Fire"
+          },
+          "descriptions": {
+            "en": "Raven Fire"
+          },
+          "email": "vendor@ravenfire.games",
+          "url": "https://ravenfire.games",
+          "support": "https://ravenfire.games/dev/support"
+        },
         "titles": {
           "en": "Dice Pad"
         },
@@ -136,7 +160,6 @@
             "descriptions": {
               "en": "The Values of the D6 dice"
             },
-            "default": false,
             "properties": [
               {
                 "key": "value",
@@ -159,7 +182,6 @@
             "descriptions": {
               "en": "The Values of the D10 dice"
             },
-            "default": false,
             "properties": [
               {
                 "key": "value",
@@ -175,22 +197,21 @@
             ]
           },
           {
-            "key": "d12",
+            "key": "d20",
             "titles": {
-              "en": "D12"
+              "en": "D20"
             },
             "descriptions": {
-              "en": "The Values of the D12 dice"
+              "en": "The Values of the D20 dice"
             },
-            "default": false,
             "properties": [
               {
                 "key": "value",
                 "titles": {
-                  "en": "D12 Value"
+                  "en": "D20 Value"
                 },
                 "descriptions": {
-                  "en": "Value of the D12 Die, one value per collection element"
+                  "en": "Value of the D20 Die, one value per collection element"
                 },
                 "data_type": "Integer",
                 "collection": true

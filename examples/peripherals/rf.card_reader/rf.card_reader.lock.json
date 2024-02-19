@@ -1,4 +1,7 @@
 {
+  "meta": {
+    "generated": "2024-02-19"
+  },
   "version": "2.18.1",
   "uuid": "1298yujhfsa8i1",
   "titles": {
@@ -8,20 +11,43 @@
     "en": "Card Reader with 5 slots, indicator lights, and a button pad."
   },
   "vendor": {
-    "name": "rf.console",
-    "url": "http://rf.console",
-    "email": "mwilson@electricjones.me"
+    "vendor": {
+      "name": "ravenfire",
+      "titles": {
+        "en": "Raven Fire"
+      },
+      "descriptions": {
+        "en": "Raven Fire"
+      },
+      "email": "vendor@ravenfire.games",
+      "url": "https://ravenfire.games",
+      "support": "https://ravenfire.games/dev/support"
+    }
   },
-  "url": "http://rf.tech/peripherals/card_reader",
-  "support": "http://rf.tech/peripherals/card_reader/support",
+  "url": "http://ravenfire.games/dev/peripherals/card_reader",
+  "support": "http://ravenfire.games/dev/support",
   "provides": [
     {
       "name": "peripheral_defined_card_reader",
       "count": 5,
       "spec": {
-        "url": "http://electricjones.me/rf/specs/card.toml",
+        "meta": {
+          "generated": "2024-02-19"
+        },
+        "url": "https://ravenfire.games/dev/specs/card.json",
         "version": "1.2.3",
-        "vendor": "ravenfire",
+        "vendor": {
+          "name": "ravenfire",
+          "titles": {
+            "en": "Raven Fire"
+          },
+          "descriptions": {
+            "en": "Raven Fire"
+          },
+          "email": "vendor@ravenfire.games",
+          "url": "https://ravenfire.games",
+          "support": "https://ravenfire.games/dev/support"
+        },
         "titles": {
           "en": "Card",
           "es": "Tarjeta"
@@ -55,8 +81,7 @@
             "descriptions": {
               "en": "A card with RFID",
               "es": "Una tarjeta con RFID"
-            },
-            "default": true
+            }
           },
           {
             "key": "nfc",
@@ -67,8 +92,7 @@
             "descriptions": {
               "en": "A card with NFC",
               "es": "Una tarjeta con NFC"
-            },
-            "default": false
+            }
           }
         ]
       }

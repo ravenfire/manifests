@@ -8,16 +8,13 @@
   "descriptions": {
     "en": "A touch screen display for playables as well"
   },
-  "vendor": {
-    "name": "rf.console",
-    "url": "http://rf.console"
-  },
+  "vendor": "https://ravenfire.games/dev/vendor.json",
   "provides": [
     {
       "name": "peripheral_defined_screen",
       "count": 1,
       "spec": {
-        "url": "http://electricjones.me/rf/specs/screen.json",
+        "url": "https://ravenfire.games/dev/specs/screen.json",
         "version": "10.1.2-alpha"
       }
     }

@@ -1,0 +1,14 @@
+{
+  "vendor": {
+    "name": "ravenfire",
+    "titles": {
+      "en": "Raven Fire"
+    },
+    "descriptions": {
+      "en": "Raven Fire"
+    },
+    "email": "vendor@ravenfire.games",
+    "url": "https://ravenfire.games",
+    "support": "https://ravenfire.games/dev/support"
+  }
+}

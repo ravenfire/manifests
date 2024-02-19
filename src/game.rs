@@ -1,13 +1,13 @@
 use getset::{Getters, MutGetters, Setters};
 
-use common::data::ValidKey;
+use common::data::{LanguageMap, ValidKey};
 use common::macros::{Jsonable, Streamable, Tomlable};
 use common::semver::{Version, VersionReq};
 use common::serde::{Deserialize, Serialize};
 use common::url::Url;
 
 use crate::range::Range;
-use crate::{LanguageMap, Vendor};
+use crate::{LanguageMap, VendorFull};
 
 #[derive(
     Tomlable,
@@ -26,7 +26,7 @@ pub struct GameManifest {
     name: ValidKey,
     titles: LanguageMap,
     descriptions: LanguageMap,
-    vendor: Vendor,
+    vendor: VendorFull,
     version: Version,
     url: Url,
     scenarios: Vec<Scenario>,

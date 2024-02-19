@@ -1,7 +1,21 @@
 {
-  "url": "http://electricjones.me/rf/specs/card.toml",
+  "meta": {
+    "generated": "2024-02-19"
+  },
+  "url": "https://ravenfire.games/dev/specs/card.json",
   "version": "1.2.3",
-  "vendor": "ravenfire",
+  "vendor": {
+    "name": "ravenfire",
+    "titles": {
+      "en": "Raven Fire"
+    },
+    "descriptions": {
+      "en": "Raven Fire"
+    },
+    "email": "vendor@ravenfire.games",
+    "url": "https://ravenfire.games",
+    "support": "https://ravenfire.games/dev/support"
+  },
   "titles": {
     "en": "Card",
     "es": "Tarjeta"
@@ -35,8 +49,7 @@
       "descriptions": {
         "en": "A card with RFID",
         "es": "Una tarjeta con RFID"
-      },
-      "default": true
+      }
     },
     {
       "key": "nfc",
@@ -47,8 +60,7 @@
       "descriptions": {
         "en": "A card with NFC",
         "es": "Una tarjeta con NFC"
-      },
-      "default": false
+      }
     },
     {
       "key": "facing",
@@ -60,7 +72,6 @@
         "en": "The facing of the card",
         "es": "La orientación de la tarjeta"
       },
-      "default": false,
       "properties": [
         {
           "key": "facing",

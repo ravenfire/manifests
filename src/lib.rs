@@ -9,9 +9,11 @@ use getset::{Getters, Setters};
 use serde::{Deserialize, Serialize};
 
 use common::data::serialization::{Streamable as StreamableTrait, Tomlable as TomlableTrait};
-use common::data::ValidKey;
+use common::data::{LanguageMap, ValidKey};
 use common::macros::{Jsonable, Streamable, Tomlable};
 use common::url::Url;
+
+use crate::specs::{SpecFull, SpecReference};
 
 pub mod examples;
 pub mod game;
@@ -88,6 +90,14 @@ pub trait Manifest: TomlableTrait + StreamableTrait {
     }
 }
 
+#[derive(
+    Tomlable, Jsonable, Streamable, Debug, Serialize, Deserialize, Getters, Setters, Clone,
+)]
+pub enum Vendor {
+    Reference(Url),
+    Full(VendorFull),
+}
+
 /// Represents a vendor who creates a game, peripheral, playable, or other component.
 #[derive(
     Debug,
@@ -102,20 +112,24 @@ pub trait Manifest: TomlableTrait + StreamableTrait {
     Clone,
 )]
 #[getset(get = "pub")]
-pub struct Vendor {
-    name: String,
+pub struct VendorFull {
+    name: ValidKey,
+    titles: LanguageMap,
+    descriptions: LanguageMap,
     url: Url,
+    email: String,
+    support: Url,
 }
 
-impl Display for Vendor {
+impl Display for VendorFull {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         write!(f, "{}", self.name)
     }
 }
 
-impl Vendor {
+impl VendorFull {
     pub fn new(name: &str, url: &str) -> Self {
-        Vendor {
+        VendorFull {
             name: name.into(),
             url: Url::parse(url).expect("Failed to parse URL"),
         }

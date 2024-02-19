@@ -8,19 +8,15 @@
   "descriptions": {
     "en": "Card Reader with 5 slots, indicator lights, and a button pad."
   },
-  "vendor": {
-    "name": "rf.console",
-    "url": "http://rf.console",
-    "email": "mwilson@electricjones.me"
-  },
-  "url": "http://rf.tech/peripherals/card_reader",
-  "support": "http://rf.tech/peripherals/card_reader/support",
+  "vendor": "https://ravenfire.games/dev/vendor.json",
+  "url": "https://ravenfire.games/dev/peripherals/card-reader",
+  "support": "https://ravenfire.games/dev/support",
   "provides": [
     {
       "name": "peripheral_defined_card_reader",
       "count": 5,
       "spec": {
-        "url": "https://rf.tech/specs/card.json",
+        "url": "https://ravenfire.games/dev/specs/card.json",
         "version": "1.2.3",
         "features": [
           "rfid",

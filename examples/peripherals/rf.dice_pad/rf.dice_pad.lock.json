@@ -9,17 +9,39 @@
     "en": "The dice roller pad that comes with Sazi"
   },
   "vendor": {
-    "name": "rf.console",
-    "url": "http://rf.console"
+    "name": "ravenfire",
+    "titles": {
+      "en": "Raven Fire"
+    },
+    "descriptions": {
+      "en": "Raven Fire"
+    },
+    "email": "vendor@ravenfire.games",
+    "url": "https://ravenfire.games",
+    "support": "https://ravenfire.games/dev/support"
   },
   "provides": [
     {
       "name": "peripheral_defined_dice_pad",
       "count": 1,
       "spec": {
-        "url": "http://electricjones.me/rf/specs/dice.json",
+        "meta": {
+          "generated": "2024-02-19"
+        },
+        "url": "https://ravenfire.games/dev/specs/dice.json",
         "version": "4.5.6",
-        "vendor": "ravenfire",
+        "vendor": {
+          "name": "ravenfire",
+          "titles": {
+            "en": "Raven Fire"
+          },
+          "descriptions": {
+            "en": "Raven Fire"
+          },
+          "email": "vendor@ravenfire.games",
+          "url": "https://ravenfire.games",
+          "support": "https://ravenfire.games/dev/support"
+        },
         "titles": {
           "en": "Dice Pad"
         },
@@ -47,7 +69,6 @@
             "descriptions": {
               "en": "The Values of the D6 dice"
             },
-            "default": false,
             "properties": [
               {
                 "key": "value",

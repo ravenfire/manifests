@@ -2,7 +2,7 @@
   "name": "peripheral defined group",
   "count": 1,
   "spec": {
-    "url": "rf.com/specs/screen/screen.toml",
+    "url": "https://ravenfire.games/dev/specs/screen.json",
     "version": "10.1.2-alpha"
   }
 }

@@ -8,8 +8,7 @@
     "en": "Card Reader with 10 slots and a dice reader."
   },
   "vendor": {
-    "name": "watertribe",
-    "url": "http://watertribe.com"
+    "name": "watertribe"
   },
   "url": "http://watertribe.tech/card_reader",
   "support": "http://support.watertribe.com",
@@ -18,7 +17,7 @@
       "name": "peripheral_defined_card_reader",
       "count": 10,
       "spec": {
-        "url": "https://rf.tech/specs/card.json",
+        "url": "https://ravenfire.games/dev/specs/card.json",
         "version": "1.2.3",
         "features": [
           "rfid",
@@ -31,12 +30,12 @@
       "name": "peripheral_defined_dice_pad",
       "count": 1,
       "spec": {
-        "url": "http://electricjones.me/rf/specs/dice.json",
+        "url": "http://ravenfire.games/dev/specs/dice.json",
         "version": "4.5.6",
         "features": [
           "d6",
           "d10",
-          "d12"
+          "d20"
         ]
       }
     }

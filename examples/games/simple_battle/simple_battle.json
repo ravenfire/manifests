@@ -1,4 +1,7 @@
 {
+  "meta": {
+    "generated": "2024-02-19"
+  },
   "titles": {
     "en": "Simple Battle Game"
   },
@@ -9,8 +12,16 @@
   "url": "http://simple-battle.game",
   "support": "http://simple-battle.game/support",
   "vendor": {
-    "name": "Raven Fire Examples",
-    "url": "https://rf.com/"
+    "name": "ravenfire",
+    "titles": {
+      "en": "Raven Fire"
+    },
+    "descriptions": {
+      "en": "Raven Fire"
+    },
+    "email": "vendor@ravenfire.games",
+    "url": "https://ravenfire.games",
+    "support": "https://ravenfire.games/dev/support"
   },
   "scenarios": [
     {
@@ -34,13 +45,13 @@
           "io": [
             {
               "name": "playfield_game_defined_group",
-              "spec": "http://rf.tech/specs/card.json",
+              "spec": "http://ravenfire.games/dev/specs/card.json",
               "version": ">=1.2.3",
               "count": "5"
             },
             {
               "name": "enhancer_game_defined_group",
-              "spec": "http://rf.tech/specs/dice.json",
+              "spec": "http://ravenfire.games/dev/specs/dice.json",
               "version": "^4.0",
               "count": 1
             }
@@ -58,7 +69,7 @@
           "io": [
             {
               "name": "community_game_defined_group",
-              "spec": "http://rf.tech/specs/card.json",
+              "spec": "http://ravenfire.games/dev/specs/card.json",
               "version": ">=1.2.3",
               "count": "1"
             }
@@ -67,12 +78,12 @@
       ]
     },
     {
-      "name": "beginners",
+      "name": "advanced",
       "titles": {
-        "en": "Beginners"
+        "en": "Advanced"
       },
       "descriptions": {
-        "en": "A simple game for beginners"
+        "en": "A simple game for advanced players"
       },
       "players": [
         {
@@ -87,13 +98,13 @@
           "io": [
             {
               "name": "playfield_game_defined_group",
-              "spec": "http://rf.tech/specs/card.json",
+              "spec": "http://ravenfire.games/dev/specs/card.json",
               "version": ">=1.2.3",
-              "count": "5"
+              "count": "9"
             },
             {
               "name": "enhancer_game_defined_group",
-              "spec": "http://rf.tech/specs/dice.json",
+              "spec": "http://ravenfire.games/dev/specs/dice.json",
               "version": "^4.0",
               "count": 1
             }
@@ -111,8 +122,14 @@
           "io": [
             {
               "name": "community_game_defined_group",
-              "spec": "http://rf.tech/specs/card.json",
+              "spec": "http://ravenfire.games/dev/specs/card.json",
               "version": ">=1.2.3",
+              "count": "1"
+            },
+            {
+              "name": "community_game_defined_group",
+              "spec": "http://ravenfire.games/dev/specs/screen.json",
+              "version": ">=10",
               "count": "1"
             }
           ]
