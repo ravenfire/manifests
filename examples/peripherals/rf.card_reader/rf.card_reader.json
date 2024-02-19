@@ -1,5 +1,7 @@
 {
-  "name": "rf.card_reader",
+  "meta": {
+    "generated": "2024-02-19"
+  },
   "version": "2.18.1",
   "uuid": "1298yujhfsa8i1",
   "titles": {
@@ -8,19 +10,90 @@
   "descriptions": {
     "en": "Card Reader with 5 slots, indicator lights, and a button pad."
   },
-  "vendor": "https://ravenfire.games/dev/vendor.json",
-  "url": "https://ravenfire.games/dev/peripherals/card-reader",
-  "support": "https://ravenfire.games/dev/support",
+  "vendor": {
+    "vendor": {
+      "name": "ravenfire",
+      "titles": {
+        "en": "Raven Fire"
+      },
+      "descriptions": {
+        "en": "Raven Fire"
+      },
+      "email": "vendor@ravenfire.games",
+      "url": "https://ravenfire.games",
+      "support": "https://ravenfire.games/dev/support"
+    }
+  },
+  "url": "http://ravenfire.games/dev/peripherals/card_reader",
+  "support": "http://ravenfire.games/dev/support",
   "provides": [
     {
       "name": "peripheral_defined_card_reader",
       "count": 5,
       "spec": {
+        "meta": {
+          "generated": "2024-02-19"
+        },
         "url": "https://ravenfire.games/dev/specs/card.json",
         "version": "1.2.3",
+        "vendor": {
+          "name": "ravenfire",
+          "titles": {
+            "en": "Raven Fire"
+          },
+          "descriptions": {
+            "en": "Raven Fire"
+          },
+          "email": "vendor@ravenfire.games",
+          "url": "https://ravenfire.games",
+          "support": "https://ravenfire.games/dev/support"
+        },
+        "titles": {
+          "en": "Card",
+          "es": "Tarjeta"
+        },
+        "descriptions": {
+          "en": "A card",
+          "es": "Una tarjeta"
+        },
+        "properties": [
+          {
+            "key": "card",
+            "data_type": "String",
+            "optional": true,
+            "titles": {
+              "en": "Card",
+              "es": "Tarjeta"
+            },
+            "descriptions": {
+              "en": "The card",
+              "es": "La tarjeta"
+            }
+          }
+        ],
         "features": [
-          "rfid",
-          "nfc"
+          {
+            "key": "rfid",
+            "titles": {
+              "en": "RFID",
+              "es": "RFID"
+            },
+            "descriptions": {
+              "en": "A card with RFID",
+              "es": "Una tarjeta con RFID"
+            }
+          },
+          {
+            "key": "nfc",
+            "titles": {
+              "en": "NFC",
+              "es": "NFC"
+            },
+            "descriptions": {
+              "en": "A card with NFC",
+              "es": "Una tarjeta con NFC"
+            }
+          }
         ]
       }
     }
