@@ -7,7 +7,7 @@ use common::serde::{Deserialize, Serialize};
 use common::url::Url;
 
 use crate::range::Range;
-use crate::{LanguageMap, VendorFull};
+use crate::Vendor;
 
 #[derive(
     Tomlable,
@@ -26,7 +26,7 @@ pub struct GameManifest {
     name: ValidKey,
     titles: LanguageMap,
     descriptions: LanguageMap,
-    vendor: VendorFull,
+    vendor: Vendor,
     version: Version,
     url: Url,
     scenarios: Vec<Scenario>,

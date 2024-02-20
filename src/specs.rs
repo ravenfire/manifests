@@ -7,18 +7,27 @@ use common::macros::{Jsonable, Streamable, Tomlable};
 use common::semver::Version;
 use common::url::Url;
 
-use crate::VendorFull;
+use crate::Vendor;
+
+// #[derive(
+//     Tomlable, Jsonable, Streamable, Debug, Serialize, Deserialize, Getters, Setters, Clone,
+// )]
+// pub enum Spec {
+//     Reference(SpecReference),
+//     Full(SpecFull),
+// }
 
 #[derive(
-    Tomlable, Jsonable, Streamable, Debug, Serialize, Deserialize, Getters, Setters, Clone,
-)]
-pub enum Spec {
-    Reference(SpecReference),
-    Full(SpecFull),
-}
-
-#[derive(
-    Tomlable, Jsonable, Streamable, Debug, Serialize, Deserialize, Getters, Setters, Clone,
+    Tomlable,
+    Jsonable,
+    Streamable,
+    Debug,
+    Serialize,
+    Deserialize,
+    Getters,
+    Setters,
+    Clone,
+    PartialEq,
 )]
 #[getset(get = "pub", set = "pub")]
 pub struct SpecReference {
@@ -31,9 +40,9 @@ pub struct SpecReference {
     Tomlable, Jsonable, Streamable, Debug, Serialize, Deserialize, Getters, Setters, Clone,
 )]
 #[getset(get = "pub", set = "pub")]
-pub struct SpecFull {
+pub struct Spec {
     url: Url,
-    vendor: VendorFull,
+    vendor: Vendor,
     version: Version,
     titles: LanguageMap,
     descriptions: LanguageMap,

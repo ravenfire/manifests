@@ -12,7 +12,7 @@ use common::{
 };
 
 use crate::specs::SpecReference;
-use crate::{LanguageMap, VendorFull};
+use crate::Vendor;
 
 #[derive(
     Tomlable,
@@ -46,7 +46,7 @@ pub struct PeripheralManifest {
 
     /// Vendor of the device
     /// "ravenfire"
-    vendor: VendorFull,
+    vendor: Vendor,
 
     /// UUID
     /// "a1b2c3d4-e5f6-g7h8-i9j0-k1l2m3n4o5p6"
