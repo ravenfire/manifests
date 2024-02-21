@@ -7,7 +7,7 @@ use common::serde::{Deserialize, Serialize};
 use common::url::Url;
 
 use crate::range::Range;
-use crate::Vendor;
+use crate::vendor::Vendor;
 
 #[derive(
     Tomlable,

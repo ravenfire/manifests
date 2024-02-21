@@ -1,21 +1,14 @@
 use getset::{Getters, Setters};
 use serde::{Deserialize, Serialize};
 
-use common::data::schema::Schema;
+use common::data::schema::Property;
 use common::data::{LanguageMap, ValidKey};
 use common::macros::{Jsonable, Streamable, Tomlable};
 use common::semver::Version;
 use common::url::Url;
 
-use crate::Vendor;
-
-// #[derive(
-//     Tomlable, Jsonable, Streamable, Debug, Serialize, Deserialize, Getters, Setters, Clone,
-// )]
-// pub enum Spec {
-//     Reference(SpecReference),
-//     Full(SpecFull),
-// }
+use crate::meta::Meta;
+use crate::vendor::Vendor;
 
 #[derive(
     Tomlable,
@@ -41,13 +34,14 @@ pub struct SpecReference {
 )]
 #[getset(get = "pub", set = "pub")]
 pub struct Spec {
+    meta: Meta,
+    version: Version,
     url: Url,
     vendor: Vendor,
-    version: Version,
     titles: LanguageMap,
     descriptions: LanguageMap,
+    properties: Vec<Property>,
     features: Vec<Feature>,
-    schema: Schema,
 }
 
 /// Features are purely additive. They are used to add additional functionality to a spec.
@@ -59,5 +53,5 @@ pub struct Feature {
     key: ValidKey,
     titles: LanguageMap,
     descriptions: LanguageMap,
-    schema: Option<Schema>, // Can be an empty schema, in which case it will be ignored.
+    properties: Vec<Property>,
 }

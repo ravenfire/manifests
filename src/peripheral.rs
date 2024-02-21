@@ -12,7 +12,7 @@ use common::{
 };
 
 use crate::specs::SpecReference;
-use crate::Vendor;
+use crate::vendor::Vendor;
 
 #[derive(
     Tomlable,
