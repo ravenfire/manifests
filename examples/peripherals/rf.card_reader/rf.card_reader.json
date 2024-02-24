@@ -49,12 +49,10 @@
           "support": "https://ravenfire.games/dev/support"
         },
         "titles": {
-          "en": "Card",
-          "es": "Tarjeta"
+          "en": "Card"
         },
         "descriptions": {
-          "en": "A card",
-          "es": "Una tarjeta"
+          "en": "A card"
         },
         "properties": [
           {

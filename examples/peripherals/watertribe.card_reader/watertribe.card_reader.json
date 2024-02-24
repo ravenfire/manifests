@@ -1,5 +1,5 @@
 {
-  "version": "4.10",
+  "version": "4.10.0",
   "uuid": "1298yujhfsa8i1",
   "titles": {
     "en": "Water Tribe Card Reader and dice pad"
@@ -95,8 +95,12 @@
                 "key": "facing",
                 "data_type": "String",
                 "enumerations": [
-                  "up",
-                  "down"
+                  {
+                    "String": "up"
+                  },
+                  {
+                    "String": "down"
+                  }
                 ],
                 "titles": {
                   "en": "Facing",
