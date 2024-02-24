@@ -7,7 +7,6 @@ use common::macros::{Jsonable, Streamable, Tomlable};
 use common::semver::Version;
 use common::url::Url;
 
-use crate::meta::Meta;
 use crate::vendor::Vendor;
 
 #[derive(
@@ -44,9 +43,10 @@ pub struct SpecReference {
 )]
 #[getset(get = "pub", set = "pub")]
 pub struct Spec {
-    #[builder(default)]
-    #[serde(default)]
-    meta: Meta,
+    // TODO [question] I don't think I actually need to capture the meta here.
+    // #[builder(default)]
+    // #[serde(default)]
+    // meta: Meta,
     version: Version,
     url: Url,
     vendor: Vendor,
@@ -92,55 +92,68 @@ pub struct Feature {
 
 #[cfg(test)]
 mod tests {
+    use std::str::FromStr;
+
+    use maplit::hashmap;
+
+    use common::data::serialization::Jsonable;
+    use common::isolang::Language;
+    use common::semver::Version;
+    use common::url::Url;
+
+    use crate::specs::{Spec, SpecBuilder};
+
     #[test]
     fn it_serializes_min_spec() {
-        // let meta = Meta::new(DateTime::parse_with_inference("2024-02-24 16:18").unwrap());
-        //
-        // let spec = SpecBuilder::default()
-        //     .version(Version::from_str("1.0.0").unwrap())
-        //     .meta(meta)
-        //     .url(Url::parse("https://ravenfire.games/specs/spec.json").unwrap())
-        //     .vendor(crate::examples::Vendor::ravenfire_min().build())
-        //     .build()
-        //     .unwrap();
-        //
-        // let serialized = spec.to_json().unwrap();
-        // let json = r#"{"meta":{"generated":"2024-02-24T16:18:00Z"},"version":"1.0.0","url":"https://ravenfire.games/specs/spec.json","vendor":{"name":"ravenfire","titles":{},"descriptions":{},"url":null,"email":null,"support":null},"titles":{},"descriptions":{},"properties":[],"features":[]}"#;
-        // assert_eq!(serialized, json);
+        let spec = SpecBuilder::default()
+            .version(Version::from_str("1.0.0").unwrap())
+            .url(Url::parse("https://ravenfire.games/specs/spec.json").unwrap())
+            .vendor(crate::examples::Vendor::ravenfire_min().build())
+            .build()
+            .unwrap();
 
-        // let deserialized = Spec::from_json(&json).unwrap();
-        // assert_eq!(deserialized, spec);
+        let serialized = spec.to_json().unwrap();
+        let json = r#"{"version":"1.0.0","url":"https://ravenfire.games/specs/spec.json","vendor":{"name":"ravenfire","titles":{},"descriptions":{},"url":null,"email":null,"support":null},"titles":{},"descriptions":{},"properties":[],"features":[]}"#;
+        assert_eq!(serialized, json);
+
+        let min_json = r#"{"version":"1.0.0","url":"https://ravenfire.games/specs/spec.json","vendor":{"name":"ravenfire"}}"#;
+        let deserialized = Spec::from_json(&min_json).unwrap();
+        assert_eq!(deserialized, spec);
 
         // Will panic if it fails
         let example = crate::examples::Spec::card();
         let built = example.build();
     }
 
-    // #[test]
-    // fn it_serializes_full_spec() {
-    //     let spec = VendorBuilder::default()
-    //         .name("ravenfire".try_into().unwrap())
-    //         .titles(hashmap! {
-    //             Language::from_str("en").unwrap() => "Raven Fire".to_owned(),
-    //         })
-    //         .descriptions(hashmap! {
-    //             Language::from_str("en").unwrap() => "Raven Fire Games".to_owned(),
-    //         })
-    //         .url(Url::parse("https://ravenfire.games").unwrap())
-    //         .support(Url::parse("https://ravenfire.games/support").unwrap())
-    //         .email(EmailAddress::from_str("support@ravenfire.games").unwrap())
-    //         .build()
-    //         .unwrap();
-    //
-    //     let serialized = spec.to_json().unwrap();
-    //     let json = r#"{"name":"ravenfire","titles":{"eng":"Raven Fire"},"descriptions":{"eng":"Raven Fire Games"},"url":"https://ravenfire.games/","email":"support@ravenfire.games","support":"https://ravenfire.games/support"}"#;
-    //     assert_eq!(serialized, json);
-    //
-    //     let deserialized = Vendor::from_json(&json).unwrap();
-    //     assert_eq!(deserialized, spec);
-    //
-    //     // Will panic if it fails
-    //     let example = crate::examples::Vendor::ravenfire();
-    //     let built = example.build();
-    // }
+    #[test]
+    fn it_serializes_full_spec() {
+        let spec = SpecBuilder::default()
+            .version(Version::from_str("1.0.0").unwrap())
+            .url(Url::parse("https://ravenfire.games/specs/spec.json").unwrap())
+            .vendor(crate::examples::Vendor::ravenfire().build())
+            .titles(hashmap! {
+                Language::from_str("en").unwrap() => "Raven Fire".to_owned(),
+            })
+            .descriptions(hashmap! {
+                Language::from_str("en").unwrap() => "Raven Fire Games".to_owned(),
+            })
+            .properties(vec![
+                crate::examples::Property::facing().build(),
+                crate::examples::Property::weapon().build(),
+            ])
+            .features(vec![
+                crate::examples::Feature::led().build(),
+                crate::examples::Feature::rfid().build(),
+            ])
+            .build()
+            .unwrap();
+
+        let serialized = spec.to_json().unwrap();
+        let json = r#"{"version":"1.0.0","url":"https://ravenfire.games/specs/spec.json","vendor":{"name":"ravenfire","titles":{"eng":"Raven Fire"},"descriptions":{"eng":"Raven Fire"},"url":"https://ravenfire.games/","email":"vendor@ravenfire.games","support":"https://ravenfire.games/dev/support"},"titles":{"eng":"Raven Fire"},"descriptions":{"eng":"Raven Fire Games"},"properties":[{"key":"facing","data_type":"String","titles":{},"descriptions":{},"optional":false,"enumerations":[{"String":"up"},{"String":"down"}]},{"key":"weapon","data_type":"Playable","titles":{"eng":"Playable"},"descriptions":{"eng":"Which weapon do you have?"},"optional":true,"enumerations":[]}],"features":[{"key":"led","titles":{"eng":"LED"},"descriptions":{"eng":"Is an LED Light On?"},"properties":[{"key":"color","data_type":"String","titles":{"eng":"Color"},"descriptions":{"eng":"What color is the LED?"},"optional":false,"enumerations":[{"String":"red"},{"String":"green"},{"String":"blue"}]}]},{"key":"rfid","titles":{},"descriptions":{},"properties":[]}]}"#;
+        assert_eq!(serialized, json);
+
+        // Will panic if it fails
+        let example = crate::examples::Spec::card();
+        let built = example.build();
+    }
 }

@@ -1,9 +1,11 @@
 //! This module provides a set of example data for testing and documentation purposes.
 //! Examples panic on purpose instead of using Result<>
+use common::data::schema::Property as DataProperty;
 use common::data::serialization::Jsonable;
 
 use crate::game::GameManifest;
 use crate::peripheral::PeripheralManifest;
+use crate::specs::Feature as SpecFeature;
 
 pub struct Peripheral {
     json: String,
@@ -122,5 +124,123 @@ impl Vendor {
 
     pub fn build(&self) -> crate::vendor::Vendor {
         crate::vendor::Vendor::from_json(self.json()).expect("Failed to build Vendor")
+    }
+}
+
+pub struct Feature {
+    json: String,
+}
+
+impl Feature {
+    pub fn rfid() -> Self {
+        Self {
+            json: r#"
+            {
+                "key": "rfid"
+            }
+            "#
+            .to_string(),
+        }
+    }
+    pub fn led() -> Self {
+        Self {
+            json: r#"
+            {
+                "key": "led",
+                "titles": {
+                    "en": "LED"
+                },
+                "descriptions": {
+                    "en": "Is an LED Light On?"
+                },
+                "properties": [
+                    {
+                        "key": "color",
+                        "data_type": "String",
+                        "titles": {
+                            "en": "Color"
+                        },
+                        "descriptions": {
+                            "en": "What color is the LED?"
+                        },
+                        "enumerations": [
+                            {"String": "red"},
+                            {"String": "green"},
+                            {"String": "blue"}
+                        ]
+                    }
+                ]
+            }
+            "#
+            .to_string(),
+        }
+    }
+
+    pub fn json(&self) -> &str {
+        &self.json
+    }
+
+    pub fn build(&self) -> SpecFeature {
+        SpecFeature::from_json(self.json()).expect("Failed to build Feature")
+    }
+}
+
+pub struct Property {
+    json: String,
+}
+
+impl Property {
+    pub fn facing() -> Self {
+        Self {
+            json: r#"
+            {
+                "key": "facing",
+                "data_type": "String",
+                "enumerations": [
+                    {"String": "up"},
+                    {"String": "down"}
+                ]
+            }
+            "#
+            .to_string(),
+        }
+    }
+    pub fn strength() -> Self {
+        Self {
+            json: r#"
+            {
+                "key": "strength",
+                "data_type": "Float"
+            }
+            "#
+            .to_string(),
+        }
+    }
+
+    pub fn weapon() -> Self {
+        Self {
+            json: r#"
+            {
+                "key": "weapon",
+                "data_type": "Playable",
+                "optional": true,
+                "titles": {
+                    "en": "Playable"
+                },
+                "descriptions": {
+                    "en": "Which weapon do you have?"
+                }
+            }
+            "#
+            .to_string(),
+        }
+    }
+
+    pub fn json(&self) -> &str {
+        &self.json
+    }
+
+    pub fn build(&self) -> DataProperty {
+        DataProperty::from_json(self.json()).expect("Failed to build Property")
     }
 }

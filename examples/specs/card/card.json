@@ -77,8 +77,12 @@
           "key": "facing",
           "data_type": "String",
           "enumerations": [
-            "up",
-            "down"
+            {
+              "String": "up"
+            },
+            {
+              "String": "down"
+            }
           ],
           "titles": {
             "en": "Facing",
