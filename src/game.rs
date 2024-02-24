@@ -21,15 +21,21 @@ use crate::vendor::Vendor;
     Setters,
     MutGetters,
     Clone,
+    PartialEq,
+    Builder,
 )]
 #[getset(get = "pub", set = "pub")]
 pub struct GameManifest {
-    name: ValidKey,
+    #[serde(default)]
+    #[builder(default)]
     titles: LanguageMap,
+    #[serde(default)]
+    #[builder(default)]
     descriptions: LanguageMap,
-    vendor: Vendor,
     version: Version,
-    url: Url,
+    url: Option<Url>,
+    support: Option<Url>,
+    vendor: Vendor,
     scenarios: Vec<Scenario>,
 }
 
@@ -44,11 +50,17 @@ pub struct GameManifest {
     Setters,
     MutGetters,
     Clone,
+    PartialEq,
+    Builder,
 )]
 #[getset(get = "pub", set = "pub")]
 pub struct Scenario {
     name: ValidKey,
+    #[serde(default)]
+    #[builder(default)]
     titles: LanguageMap,
+    #[serde(default)]
+    #[builder(default)]
     descriptions: LanguageMap,
     players: Vec<ScenarioPlayer>,
 }
@@ -64,12 +76,18 @@ pub struct Scenario {
     Setters,
     MutGetters,
     Clone,
+    PartialEq,
+    Builder,
 )]
 // Analogous to PlayerType
 #[getset(get = "pub", set = "pub")]
 pub struct ScenarioPlayer {
     name: ValidKey,
+    #[serde(default)]
+    #[builder(default)]
     titles: LanguageMap,
+    #[serde(default)]
+    #[builder(default)]
     descriptions: LanguageMap,
     count: Range,
     #[serde(default = "Vec::default")]
@@ -89,17 +107,38 @@ pub struct ScenarioPlayer {
     Setters,
     MutGetters,
     Clone,
+    PartialEq,
+    Builder,
 )]
 #[getset(get = "pub", set = "pub")]
 pub struct Requirement {
+    // Game Defined Group
     name: ValidKey,
     spec: Url,
     version: VersionReq,
-    count: Range,
-    // #[serde(default = "bool::default")]
-    // optional: bool,
+    count: u32,
     #[serde(default = "Vec::default")]
     features: Vec<ValidKey>,
 }
 
-// features = ["nfc", "facing", "indicators(3)"]
+#[cfg(test)]
+mod tests {
+    use common::data::serialization::Jsonable;
+
+    use crate::game::GameManifest;
+
+    #[test]
+    fn it_serializes_game() {
+        // We start with a Game
+        let example = crate::examples::Game::simple_battle();
+
+        // Let's build a manifest
+        let manifest = example.build();
+
+        // And let's do it through a round trip
+        let serialized = manifest.to_json().unwrap();
+        let deserialized = GameManifest::from_json(&serialized).unwrap();
+
+        assert_eq!(deserialized, manifest);
+    }
+}

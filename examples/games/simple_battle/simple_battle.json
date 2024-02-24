@@ -8,7 +8,7 @@
   "descriptions": {
     "en": "A simple battle game with cards and dice"
   },
-  "version": "9.8",
+  "version": "9.8.1",
   "url": "http://simple-battle.game",
   "support": "http://simple-battle.game/support",
   "vendor": {
@@ -47,7 +47,7 @@
               "name": "playfield_game_defined_group",
               "spec": "http://ravenfire.games/dev/specs/card.json",
               "version": ">=1.2.3",
-              "count": "5"
+              "count": 5
             },
             {
               "name": "enhancer_game_defined_group",
@@ -71,7 +71,7 @@
               "name": "community_game_defined_group",
               "spec": "http://ravenfire.games/dev/specs/card.json",
               "version": ">=1.2.3",
-              "count": "1"
+              "count": 1
             }
           ]
         }
@@ -100,7 +100,7 @@
               "name": "playfield_game_defined_group",
               "spec": "http://ravenfire.games/dev/specs/card.json",
               "version": ">=1.2.3",
-              "count": "9"
+              "count": 9
             },
             {
               "name": "enhancer_game_defined_group",
@@ -112,7 +112,7 @@
         },
         {
           "name": "community",
-          "count": 1,
+          "count": "1",
           "titles": {
             "en": "Community"
           },
@@ -124,13 +124,13 @@
               "name": "community_game_defined_group",
               "spec": "http://ravenfire.games/dev/specs/card.json",
               "version": ">=1.2.3",
-              "count": "1"
+              "count": 1
             },
             {
               "name": "community_game_defined_group",
               "spec": "http://ravenfire.games/dev/specs/screen.json",
               "version": ">=10",
-              "count": "1"
+              "count": 1
             }
           ]
         }

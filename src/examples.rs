@@ -12,6 +12,12 @@ pub struct Peripheral {
 }
 
 impl Peripheral {
+    pub fn min() -> Self {
+        Self {
+            json: include_str!("../examples/peripherals/min.json").to_string(),
+        }
+    }
+
     pub fn rf_card_reader() -> Self {
         Self {
             json: include_str!("../examples/peripherals/rf.card_reader/rf.card_reader.json")
@@ -54,6 +60,12 @@ pub struct Game {
 }
 
 impl Game {
+    pub fn min() -> Self {
+        Self {
+            json: include_str!("../examples/min.json").to_string(),
+        }
+    }
+
     pub fn simple_battle() -> Self {
         Self {
             json: include_str!("../examples/games/simple_battle/simple_battle.json").to_string(),
@@ -74,6 +86,12 @@ pub struct Spec {
 }
 
 impl Spec {
+    pub fn min() -> Self {
+        Self {
+            json: include_str!("../examples/specs/min.json").to_string(),
+        }
+    }
+
     pub fn card() -> Self {
         Self {
             json: include_str!("../examples/specs/card/card.json").to_string(),
@@ -106,15 +124,15 @@ pub struct Vendor {
 }
 
 impl Vendor {
-    pub fn ravenfire() -> Self {
+    pub fn min() -> Self {
         Self {
-            json: include_str!("../examples/vendor/ravenfire.json").to_string(),
+            json: include_str!("../examples/vendor/min.json").to_string(),
         }
     }
 
-    pub fn ravenfire_min() -> Self {
+    pub fn ravenfire() -> Self {
         Self {
-            json: include_str!("../examples/vendor/ravenfire-min.json").to_string(),
+            json: include_str!("../examples/vendor/ravenfire.json").to_string(),
         }
     }
 
@@ -126,6 +144,8 @@ impl Vendor {
         crate::vendor::Vendor::from_json(self.json()).expect("Failed to build Vendor")
     }
 }
+
+// These are component parts and don't deserve their own json files in the examples directory
 
 pub struct Feature {
     json: String,

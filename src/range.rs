@@ -101,6 +101,33 @@ impl<'de> Deserialize<'de> for Range {
                 })
             }
 
+            // Handles floating-point numbers by converting them to integers
+            fn visit_f64<E>(self, value: f64) -> Result<Range, E>
+            where
+                E: de::Error,
+            {
+                if value.fract() == 0.0 {
+                    Ok(Range {
+                        min: value as u8,
+                        max: value as u8,
+                        modifier: None,
+                    })
+                } else {
+                    Err(E::custom("Expected an integer"))
+                }
+            }
+
+            fn visit_u64<E>(self, value: u64) -> Result<Range, E>
+            where
+                E: de::Error,
+            {
+                Ok(Range {
+                    min: value as u8,
+                    max: value as u8,
+                    modifier: None,
+                })
+            }
+
             fn visit_str<E>(self, value: &str) -> Result<Range, E>
             where
                 E: de::Error,
@@ -225,17 +252,17 @@ enum RangeParsePhase {
 mod tests {
     use serde::{Deserialize, Serialize};
 
-    use common::macros::Tomlable;
+    use common::macros::{Jsonable, Tomlable};
 
     use crate::range::Range;
 
-    #[derive(Serialize, Deserialize, Tomlable, PartialEq, Debug)]
+    #[derive(Serialize, Deserialize, Jsonable, Tomlable, PartialEq, Debug)]
     struct Container {
         range: Range,
     }
 
     mod deserialize {
-        use common::data::serialization::Tomlable;
+        use common::data::serialization::{Jsonable, Tomlable};
 
         use crate::range::tests::Container;
         use crate::range::{Range, RangeModifier};
@@ -265,8 +292,9 @@ mod tests {
                 },
             };
 
-            let toml = "range = 7\n";
-            let container = Container::from_toml(toml).expect("Failed to deserialize from TOML");
+            // let toml = "range = 7\n";
+            let json = r#"{"range": 7}"#;
+            let container = Container::from_json(json).expect("Failed to deserialize from JSON");
             assert_eq!(container, expected);
         }
 

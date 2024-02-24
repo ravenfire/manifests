@@ -85,48 +85,22 @@ pub struct Provider {
 
 #[cfg(test)]
 mod tests {
-    use std::str::FromStr;
-
-    use maplit::hashmap;
-
     use common::data::serialization::Jsonable;
-    use common::isolang::Language;
-    use common::semver::Version;
-    use common::url::Url;
 
-    use crate::peripheral::{PeripheralManifest, PeripheralManifestBuilder};
+    use crate::peripheral::PeripheralManifest;
 
     #[test]
     fn it_serializes_peripheral() {
-        let peripheral = PeripheralManifestBuilder::default()
-            .version(Version::from_str("1.0.0").unwrap())
-            .uuid("a1b2c3d4-e5f6-g7h8-i9j0-k1l2m3n4o5p6".try_into().unwrap())
-            .vendor(crate::examples::Vendor::ravenfire_min().build())
-            .url(Some(
-                Url::parse("https://ravenfire.games/peripherals/card_reader").unwrap(),
-            ))
-            .titles(hashmap! {
-                Language::from_str("en").unwrap() => "Card Reader".to_owned(),
-            })
-            .provides(vec![
-                // ProviderBuilder::default()
-                //     .name("peripheral_defined_group_card_reader".try_into().unwrap())
-                //     .spec(crate::examples::Spec::card().build())
-                //     .count(5)
-                //     .build()
-                //     .unwrap()
-            ])
-            // Descriptions and support left out on purpose to make sure it works with those optional fields
-            .build()
-            .unwrap();
-
-        let serialized = peripheral.to_json().unwrap();
-
-        let deserialized = PeripheralManifest::from_json(&serialized).unwrap();
-        assert_eq!(deserialized, peripheral);
-
-        // Will panic if it fails
+        // We start with a Game
         let example = crate::examples::Peripheral::watertribe_card_reader();
-        example.build();
+
+        // Let's build a manifest
+        let manifest = example.build();
+
+        // And let's do it through a round trip
+        let serialized = manifest.to_json().unwrap();
+        let deserialized = PeripheralManifest::from_json(&serialized).unwrap();
+
+        assert_eq!(deserialized, manifest);
     }
 }
