@@ -1,3 +1,5 @@
+//! Meta data for the project
+//! This is all deprecated
 use getset::{Getters, Setters};
 use serde::{Deserialize, Deserializer, Serialize};
 
@@ -29,12 +31,6 @@ where
 {
     let s = String::deserialize(des)?;
     DateTime::<Utc>::parse_with_inference(&s).map_err(serde::de::Error::custom)
-}
-
-impl Meta {
-    pub fn new(generated: DateTime<Utc>) -> Self {
-        Meta { generated }
-    }
 }
 
 impl Default for Meta {

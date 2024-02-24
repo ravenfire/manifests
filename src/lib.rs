@@ -9,8 +9,8 @@ use std::collections::HashMap;
 // use std::fmt::Display;
 use std::path::PathBuf;
 
+use common::data::key::ValidKey;
 use common::data::serialization::{Streamable as StreamableTrait, Tomlable as TomlableTrait};
-use common::data::ValidKey;
 
 // use serde::{Deserialize, Serialize};
 

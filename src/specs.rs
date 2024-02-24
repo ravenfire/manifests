@@ -1,8 +1,9 @@
 use getset::{Getters, Setters};
 use serde::{Deserialize, Serialize};
 
+use common::data::key::ValidKey;
 use common::data::schema::Property;
-use common::data::{LanguageMap, ValidKey};
+use common::data::LanguageMap;
 use common::macros::{Jsonable, Streamable, Tomlable};
 use common::semver::Version;
 use common::url::Url;
@@ -122,7 +123,7 @@ mod tests {
 
         // Will panic if it fails
         let example = crate::examples::Spec::card();
-        let built = example.build();
+        let _ = example.build();
     }
 
     #[test]
@@ -154,6 +155,6 @@ mod tests {
 
         // Will panic if it fails
         let example = crate::examples::Spec::card();
-        let built = example.build();
+        let _ = example.build();
     }
 }

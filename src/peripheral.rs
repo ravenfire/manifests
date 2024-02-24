@@ -3,9 +3,9 @@ use std::collections::HashMap;
 use getset::{Getters, Setters};
 use serde::{Deserialize, Serialize};
 
+use common::data::key::ValidKey;
 use common::data::LanguageMap;
 use common::{
-    data::ValidKey,
     macros::{Jsonable, Streamable, Tomlable},
     semver::Version,
     toml::Value,

@@ -3,7 +3,8 @@ use std::fmt::{Display, Formatter};
 use getset::{Getters, Setters};
 use serde::{Deserialize, Serialize};
 
-use common::data::{LanguageMap, ValidKey};
+use common::data::key::ValidKey;
+use common::data::LanguageMap;
 use common::email_address::EmailAddress;
 use common::macros::{Jsonable, Streamable, Tomlable};
 use common::url::Url;
@@ -88,7 +89,7 @@ mod tests {
 
         // Will panic if it fails
         let example = crate::examples::Vendor::ravenfire_min();
-        let built = example.build();
+        let _ = example.build();
     }
 
     #[test]
@@ -116,6 +117,6 @@ mod tests {
 
         // Will panic if it fails
         let example = crate::examples::Vendor::ravenfire();
-        let built = example.build();
+        let _ = example.build();
     }
 }
