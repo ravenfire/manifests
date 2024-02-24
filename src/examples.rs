@@ -1,3 +1,5 @@
+//! This module provides a set of example data for testing and documentation purposes.
+//! Examples panic on purpose instead of using Result<>
 use common::data::serialization::Jsonable;
 
 use crate::game::GameManifest;
