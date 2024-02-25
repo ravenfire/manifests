@@ -1,5 +1,3 @@
-use common::data::serialization::Jsonable;
-
 use crate::examples::Example;
 use crate::specs::Feature as SpecFeature;
 

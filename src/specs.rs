@@ -44,10 +44,6 @@ pub struct SpecReference {
 )]
 #[getset(get = "pub", set = "pub")]
 pub struct Spec {
-    // TODO [question] I don't think I actually need to capture the meta here.
-    // #[builder(default)]
-    // #[serde(default)]
-    // meta: Meta,
     version: Version,
     url: Url,
     vendor: Vendor,

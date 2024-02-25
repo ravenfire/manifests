@@ -120,26 +120,3 @@ pub struct Requirement {
     #[serde(default = "Vec::default")]
     features: Vec<ValidKey>,
 }
-
-#[cfg(test)]
-mod tests {
-    use common::data::serialization::Jsonable;
-
-    use crate::examples::Example;
-    use crate::game::GameManifest;
-
-    #[test]
-    fn it_serializes_game() {
-        // We start with a Game
-        let example = crate::examples::games::Game::simple_battle();
-
-        // Let's build a manifest
-        let manifest = example.build();
-
-        // And let's do it through a round trip
-        let serialized = manifest.to_json().unwrap();
-        let deserialized = GameManifest::from_json(&serialized).unwrap();
-
-        assert_eq!(deserialized, manifest);
-    }
-}

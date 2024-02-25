@@ -1,5 +1,4 @@
 use common::data::schema::Property as DataProperty;
-use common::data::serialization::Jsonable;
 
 use crate::examples::Example;
 

@@ -1,5 +1,3 @@
-use common::data::serialization::Jsonable;
-
 use crate::examples::Example;
 use crate::game::GameManifest;
 
@@ -39,6 +37,7 @@ mod test {
         examples::run_example_round_trip_test(Game::min);
     }
 
+    #[test]
     fn it_serializes_simple_battle() {
         examples::run_example_round_trip_test(Game::simple_battle);
     }

@@ -8,8 +8,6 @@ use serde::{de, Deserialize, Deserializer, Serialize, Serializer};
 use common::macros::{Jsonable, Streamable, Tomlable};
 use common::str;
 
-// use serde::de::Visitor;
-
 /// Represents modifiers that can be applied to a range.
 ///
 /// Used to describe things like "there must be an even number of players"

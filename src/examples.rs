@@ -12,7 +12,6 @@ pub mod specs;
 pub mod vendors;
 
 pub trait Example {
-    // type BuiltValue: Jsonable + Tomlable + Streamable + PartialEq + Debug;
     type BuiltValue: Jsonable<Entity = Self::BuiltValue>
         + Tomlable<Entity = Self::BuiltValue>
         + Streamable<Entity = Self::BuiltValue>
@@ -25,6 +24,7 @@ pub trait Example {
     }
 }
 
+#[cfg(test)]
 fn run_example_round_trip_test<T, F>(setup: F)
 where
     T: Example,
