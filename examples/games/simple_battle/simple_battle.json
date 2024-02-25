@@ -10,8 +10,8 @@
     "en": "A simple battle game with cards and dice"
   },
   "version": "9.8.1",
-  "url": "http://simple-battle.game",
-  "support": "http://simple-battle.game/support",
+  "url": "https://simple-battle.game",
+  "support": "https://simple-battle.game/support",
   "vendor": {
     "name": "ravenfire",
     "titles": {
@@ -46,13 +46,13 @@
           "io": [
             {
               "name": "playfield_game_defined_group",
-              "spec": "http://ravenfire.games/dev/specs/card.json",
+              "spec": "https://ravenfire.games/dev/specs/card.json",
               "version": ">=1.2.3",
               "count": 5
             },
             {
               "name": "enhancer_game_defined_group",
-              "spec": "http://ravenfire.games/dev/specs/dice.json",
+              "spec": "https://ravenfire.games/dev/specs/dice.json",
               "version": "^4.0",
               "count": 1
             }
@@ -70,7 +70,7 @@
           "io": [
             {
               "name": "community_game_defined_group",
-              "spec": "http://ravenfire.games/dev/specs/card.json",
+              "spec": "https://ravenfire.games/dev/specs/card.json",
               "version": ">=1.2.3",
               "count": 1
             }
@@ -99,13 +99,13 @@
           "io": [
             {
               "name": "playfield_game_defined_group",
-              "spec": "http://ravenfire.games/dev/specs/card.json",
+              "spec": "https://ravenfire.games/dev/specs/card.json",
               "version": ">=1.2.3",
               "count": 9
             },
             {
               "name": "enhancer_game_defined_group",
-              "spec": "http://ravenfire.games/dev/specs/dice.json",
+              "spec": "https://ravenfire.games/dev/specs/dice.json",
               "version": "^4.0",
               "count": 1
             }
@@ -123,13 +123,13 @@
           "io": [
             {
               "name": "community_game_defined_group",
-              "spec": "http://ravenfire.games/dev/specs/card.json",
+              "spec": "https://ravenfire.games/dev/specs/card.json",
               "version": ">=1.2.3",
               "count": 1
             },
             {
               "name": "community_game_defined_group",
-              "spec": "http://ravenfire.games/dev/specs/screen.json",
+              "spec": "https://ravenfire.games/dev/specs/screen.json",
               "version": ">=10",
               "count": 1
             }

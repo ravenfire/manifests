@@ -10,8 +10,8 @@
   "vendor": {
     "name": "watertribe"
   },
-  "url": "http://watertribe.tech/card_reader",
-  "support": "http://support.watertribe.com",
+  "url": "https://watertribe.tech/card_reader",
+  "support": "https://support.watertribe.com",
   "provides": [
     {
       "name": "peripheral_defined_card_reader",

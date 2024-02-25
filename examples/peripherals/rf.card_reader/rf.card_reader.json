@@ -22,8 +22,8 @@
     "url": "https://ravenfire.games",
     "support": "https://ravenfire.games/dev/support"
   },
-  "url": "http://ravenfire.games/dev/peripherals/card_reader",
-  "support": "http://ravenfire.games/dev/support",
+  "url": "https://ravenfire.games/dev/peripherals/card_reader",
+  "support": "https://ravenfire.games/dev/support",
   "provides": [
     {
       "name": "peripheral_defined_card_reader",
