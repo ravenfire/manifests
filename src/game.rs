@@ -26,6 +26,7 @@ use crate::vendor::Vendor;
 )]
 #[getset(get = "pub", set = "pub")]
 pub struct GameManifest {
+    key: ValidKey,
     #[serde(default)]
     #[builder(default)]
     titles: LanguageMap,
@@ -116,7 +117,7 @@ pub struct Requirement {
     name: ValidKey,
     spec: Url,
     version: VersionReq,
-    count: u32,
+    count: u8,
     #[serde(default = "Vec::default")]
     features: Vec<ValidKey>,
 }
