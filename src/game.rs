@@ -125,12 +125,13 @@ pub struct Requirement {
 mod tests {
     use common::data::serialization::Jsonable;
 
+    use crate::examples::Example;
     use crate::game::GameManifest;
 
     #[test]
     fn it_serializes_game() {
         // We start with a Game
-        let example = crate::examples::Game::simple_battle();
+        let example = crate::examples::games::Game::simple_battle();
 
         // Let's build a manifest
         let manifest = example.build();

@@ -11,18 +11,16 @@
     "en": "Card Reader with 5 slots, indicator lights, and a button pad."
   },
   "vendor": {
-    "vendor": {
-      "name": "ravenfire",
-      "titles": {
-        "en": "Raven Fire"
-      },
-      "descriptions": {
-        "en": "Raven Fire"
-      },
-      "email": "vendor@ravenfire.games",
-      "url": "https://ravenfire.games",
-      "support": "https://ravenfire.games/dev/support"
-    }
+    "name": "ravenfire",
+    "titles": {
+      "en": "Raven Fire"
+    },
+    "descriptions": {
+      "en": "Raven Fire"
+    },
+    "email": "vendor@ravenfire.games",
+    "url": "https://ravenfire.games",
+    "support": "https://ravenfire.games/dev/support"
   },
   "url": "http://ravenfire.games/dev/peripherals/card_reader",
   "support": "http://ravenfire.games/dev/support",

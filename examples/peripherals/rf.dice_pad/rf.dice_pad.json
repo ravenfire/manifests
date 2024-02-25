@@ -1,5 +1,7 @@
 {
-  "name": "rf.dice_pad",
+  "meta": {
+    "generated": "2024-02-19"
+  },
   "version": "1.2.1",
   "uuid": "18ijad8u12kfa8da8a",
   "titles": {
@@ -25,9 +27,6 @@
       "name": "peripheral_defined_dice_pad",
       "count": 1,
       "spec": {
-        "meta": {
-          "generated": "2024-02-19"
-        },
         "url": "https://ravenfire.games/dev/specs/dice.json",
         "version": "4.5.6",
         "vendor": {

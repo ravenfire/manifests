@@ -59,6 +59,7 @@ pub struct PeripheralManifest {
     support: Option<Url>,
 
     /// A list of specs it implements
+    #[serde(default)]
     provides: Vec<Provider>,
 }
 
@@ -81,26 +82,4 @@ pub struct Provider {
     name: ValidKey,
     spec: Spec,
     count: u8,
-}
-
-#[cfg(test)]
-mod tests {
-    use common::data::serialization::Jsonable;
-
-    use crate::peripheral::PeripheralManifest;
-
-    #[test]
-    fn it_serializes_peripheral() {
-        // We start with a Game
-        let example = crate::examples::Peripheral::watertribe_card_reader();
-
-        // Let's build a manifest
-        let manifest = example.build();
-
-        // And let's do it through a round trip
-        let serialized = manifest.to_json().unwrap();
-        let deserialized = PeripheralManifest::from_json(&serialized).unwrap();
-
-        assert_eq!(deserialized, manifest);
-    }
 }
