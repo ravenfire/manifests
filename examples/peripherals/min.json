@@ -1,7 +1,8 @@
 {
   "version": "2.8.7",
   "key": "example.min",
+  "uuid": "12345",
   "vendor": {
-    "name": "watertribe"
+    "name": "some-vendor"
   }
 }
