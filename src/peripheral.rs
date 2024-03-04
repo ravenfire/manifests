@@ -1,17 +1,16 @@
-use std::collections::HashMap;
-
 use getset::{Getters, Setters};
 use serde::{Deserialize, Serialize};
 
+use common::data::key::ValidKey;
+use common::data::LanguageMap;
+use common::url::Url;
 use common::{
-    data::ValidKey,
     macros::{Jsonable, Streamable, Tomlable},
     semver::Version,
-    toml::Value,
-    url::Url,
 };
 
-use crate::{LanguageMap, Vendor};
+use crate::specs::Spec;
+use crate::vendor::Vendor;
 
 #[derive(
     Tomlable,
@@ -24,48 +23,43 @@ use crate::{LanguageMap, Vendor};
     Setters,
     Clone,
     PartialEq,
+    Builder,
 )]
 #[getset(get = "pub", set = "pub")]
 pub struct PeripheralManifest {
-    /// The unique identifier for the peripheral
-    /// `screen`
-    name: ValidKey,
-
-    /// The human readable name of the peripheral
-    /// { en: "Screen", fr: "Écran" }
-    titles: LanguageMap,
-
-    /// Longer human readable description
-    /// { en: "A screen", fr: "Un écran" }
-    descriptions: LanguageMap,
-
     /// Semantic version of the hardware and software
     /// "1.23.01-alpha"
     version: Version,
 
-    /// Vendor of the device
-    /// "ravenfire"
-    vendor: Vendor,
-
-    /// UUID
-    /// "a1b2c3d4-e5f6-g7h8-i9j0-k1l2m3n4o5p6"
+    // rf.whatever
     uuid: ValidKey,
 
+    /// Vendor of the device
+    vendor: Vendor,
+
+    /// The human readable name of the peripheral
+    /// { en: "Screen", fr: "Écran" }
+    #[serde(default)]
+    #[builder(default)]
+    titles: LanguageMap,
+
+    /// Longer human readable description
+    /// { en: "A screen", fr: "Un écran" }
+    #[serde(default)]
+    #[builder(default)]
+    descriptions: LanguageMap,
+
+    #[serde(default)]
+    #[builder(default)]
+    url: Option<Url>,
+
+    #[serde(default)]
+    #[builder(default)]
+    support: Option<Url>,
+
     /// A list of specs it implements
-    #[serde(default = "Vec::new")]
+    #[serde(default)]
     provides: Vec<Provider>,
-
-    /// A list of optional features it implements
-    #[serde(default = "HashMap::new")]
-    features: HashMap<ValidKey, Value>,
-}
-
-impl PeripheralManifest {
-    pub fn id(&self) -> ValidKey {
-        format!("{}/{}", self.vendor(), self.name())
-            .try_into()
-            .expect("Failed to create ValidKey")
-    }
 }
 
 #[derive(
@@ -79,62 +73,12 @@ impl PeripheralManifest {
     Setters,
     Clone,
     PartialEq,
+    Builder,
 )]
 #[getset(get = "pub", set = "pub")]
 pub struct Provider {
+    // Peripheral defined group
     name: ValidKey,
-    spec: Url,
-    version: Version,
-    #[serde(default = "default_count")]
+    spec: Spec,
     count: u8,
-}
-
-fn default_count() -> u8 {
-    1
-}
-
-// TODO: [restructure] May not be the best place for this to live
-#[derive(
-    Tomlable, Jsonable, Streamable, Debug, Serialize, Deserialize, Getters, Setters, Clone,
-)]
-#[getset(get = "pub", set = "pub")]
-pub struct Spec {
-    key: ValidKey,
-    url: Url,
-    titles: LanguageMap,
-    descriptions: LanguageMap,
-    version: Version,
-    features: Vec<Feature>,
-}
-
-#[derive(
-    Tomlable, Jsonable, Streamable, Debug, Serialize, Deserialize, Getters, Setters, Clone,
-)]
-#[getset(get = "pub", set = "pub")]
-pub struct Feature {
-    key: ValidKey,
-    titles: LanguageMap,
-    descriptions: LanguageMap,
-}
-
-#[cfg(test)]
-mod tests {
-    // use common::traits::{Jsonable, Streamable, Tomlable};
-    //
-    // use super::PeripheralManifest;
-    //
-    // #[test]
-    // fn test() {
-    //     let m = PeripheralManifest::new();
-    //
-    //     let stream = m.to_stream().unwrap();
-    //     // let stream = m.to_json().unwrap();
-    //     // let stream = m.to_toml().unwrap();
-    //
-    //     let des = PeripheralManifest::from_stream(&mut &stream[..]).unwrap();
-    //     // let des = PeripheralManifest::from_json(&stream).unwrap();
-    //     // let des = PeripheralManifest::from_toml(&stream).unwrap();
-    //
-    //     println!("{:?}", des);
-    // }
 }

@@ -1,0 +1,11 @@
+{
+  "name": "peripiheral defined group",
+  "count": 5,
+  "spec": {
+    "url": "https://ravenfire.games/dev/specs/card.json",
+    "version": "1.2.3",
+    "features": [
+      "d6"
+    ]
+  }
+}

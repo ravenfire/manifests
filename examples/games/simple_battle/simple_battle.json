@@ -1,0 +1,141 @@
+{
+  "meta": {
+    "generated": "2024-02-19"
+  },
+  "key": "simple-battle",
+  "titles": {
+    "en": "Simple Battle Game"
+  },
+  "descriptions": {
+    "en": "A simple battle game with cards and dice"
+  },
+  "version": "9.8.1",
+  "url": "https://simple-battle.game",
+  "support": "https://simple-battle.game/support",
+  "vendor": {
+    "name": "ravenfire",
+    "titles": {
+      "en": "Raven Fire"
+    },
+    "descriptions": {
+      "en": "Raven Fire"
+    },
+    "email": "vendor@ravenfire.games",
+    "url": "https://ravenfire.games",
+    "support": "https://ravenfire.games/dev/support"
+  },
+  "scenarios": [
+    {
+      "name": "beginners",
+      "titles": {
+        "en": "Beginners"
+      },
+      "descriptions": {
+        "en": "A simple game for beginners"
+      },
+      "players": [
+        {
+          "name": "champion",
+          "count": "2+[even]",
+          "titles": {
+            "en": "Champion"
+          },
+          "descriptions": {
+            "en": "The Champion"
+          },
+          "io": [
+            {
+              "name": "playfield_game_defined_group",
+              "spec": "https://ravenfire.games/dev/specs/card.json",
+              "version": ">=1.2.3",
+              "count": 5
+            },
+            {
+              "name": "enhancer_game_defined_group",
+              "spec": "https://ravenfire.games/dev/specs/dice.json",
+              "version": "^4.0",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "name": "community",
+          "count": 1,
+          "titles": {
+            "en": "Community"
+          },
+          "descriptions": {
+            "en": "The Community"
+          },
+          "io": [
+            {
+              "name": "community_game_defined_group",
+              "spec": "https://ravenfire.games/dev/specs/card.json",
+              "version": ">=1.2.3",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "advanced",
+      "titles": {
+        "en": "Advanced"
+      },
+      "descriptions": {
+        "en": "A simple game for advanced players"
+      },
+      "players": [
+        {
+          "name": "champion",
+          "count": "2+[even]",
+          "titles": {
+            "en": "Champion"
+          },
+          "descriptions": {
+            "en": "The Champion"
+          },
+          "io": [
+            {
+              "name": "playfield_game_defined_group",
+              "spec": "https://ravenfire.games/dev/specs/card.json",
+              "version": ">=1.2.3",
+              "count": 9
+            },
+            {
+              "name": "enhancer_game_defined_group",
+              "spec": "https://ravenfire.games/dev/specs/dice.json",
+              "version": "^4.0",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "name": "community",
+          "count": "1",
+          "titles": {
+            "en": "Community"
+          },
+          "descriptions": {
+            "en": "The Community"
+          },
+          "io": [
+            {
+              "name": "community_game_defined_group",
+              "spec": "https://ravenfire.games/dev/specs/card.json",
+              "version": ">=1.2.3",
+              "count": 1
+            },
+            {
+              "name": "community_game_defined_group",
+              "spec": "https://ravenfire.games/dev/specs/screen.json",
+              "version": ">=10",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,84 +1,46 @@
-use common::data::serialization::Tomlable;
+//! This module provides a set of example data for testing and documentation purposes.
+//! Examples panic on purpose instead of using Result<>
+use std::fmt::Debug;
 
-use crate::game::GameManifest;
-use crate::peripheral::PeripheralManifest;
+use common::data::serialization::{Jsonable, Streamable, Tomlable};
 
-pub struct Peripheral {
-    toml: String,
-}
+pub mod features;
+pub mod games;
+pub mod peripherals;
+pub mod properties;
+pub mod specs;
+pub mod vendors;
 
-impl Peripheral {
-    pub fn rf_dice_pad() -> Peripheral {
-        Self {
-            toml: include_str!("../examples/peripherals/rf.dice_pad/rf.dice_pad.lock.toml")
-                .to_string(),
-        }
-    }
+pub trait Example {
+    type BuiltValue: Jsonable<Entity = Self::BuiltValue>
+        + Tomlable<Entity = Self::BuiltValue>
+        + Streamable<Entity = Self::BuiltValue>
+        + PartialEq
+        + Debug;
 
-    pub fn rf_screen() -> Peripheral {
-        Self {
-            toml: include_str!("../examples/peripherals/rf.screen/rf.screen.lock.toml").to_string(),
-        }
-    }
-
-    pub fn spellbinder_world_builder() -> Peripheral {
-        Self {
-            toml: include_str!(
-                "../examples/peripherals/spellbinder.world_builder/spellbinder.world_builder.lock.toml"
-            )
-                .to_string(),
-        }
-    }
-
-    pub fn watertribe_card_reader() -> Peripheral {
-        Self {
-            toml: include_str!(
-                "../examples/peripherals/watertribe.card_reader/watertribe.card_reader.lock.toml"
-            )
-            .to_string(),
-        }
-    }
-
-    pub fn xl_card_reader() -> Peripheral {
-        Self {
-            toml: include_str!(
-                "../examples/peripherals/watertribe.xl_card_reader/watertribe.xl_card_reader.lock.toml"
-            )
-                .to_string(),
-        }
-    }
-
-    pub fn toml(&self) -> &str {
-        &self.toml
-    }
-
-    pub fn build(&self) -> PeripheralManifest {
-        PeripheralManifest::from_toml(self.toml()).expect("Failed to build PeripheralManifest")
+    fn json(&self) -> &str;
+    fn build(&self) -> Self::BuiltValue {
+        Self::BuiltValue::from_json(self.json()).expect("Failed to build Feature")
     }
 }
 
-pub struct Game {
-    toml: String,
-}
+#[cfg(test)]
+fn run_example_round_trip_test<T, F>(setup: F)
+where
+    T: Example,
+    F: Fn() -> T,
+{
+    // We start with an instance of T
+    let example = setup();
 
-impl crate::examples::Game {
-    pub fn spellbinder() -> crate::examples::Game {
-        Self {
-            toml: include_str!("../examples/games/spellbinder/game.lock.toml").to_string(),
-        }
-    }
+    // Build the 'BuiltValue' instance
+    let built = example.build();
 
-    pub fn tictactoe() -> crate::examples::Game {
-        Self {
-            toml: include_str!("../examples/games/tictactoe/game.lock.toml").to_string(),
-        }
-    }
+    // Convert to JSON
+    let serialized = built.to_json().unwrap();
 
-    pub fn toml(&self) -> &str {
-        &self.toml
-    }
+    // Convert back from JSON to 'BuiltValue'
+    let deserialized: T::BuiltValue = T::BuiltValue::from_json(&serialized).unwrap();
 
-    pub fn build(&self) -> GameManifest {
-        GameManifest::from_toml(self.toml()).expect("Failed to build GameManifest")
-    }
+    assert_eq!(deserialized, built);
 }

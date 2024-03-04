@@ -1,0 +1,229 @@
+{
+  "version": "4.10.0",
+  "uuid": "watertribe.card_reader",
+  "titles": {
+    "en": "Water Tribe Card Reader and dice pad"
+  },
+  "descriptions": {
+    "en": "Card Reader with 10 slots and a dice reader."
+  },
+  "vendor": {
+    "name": "watertribe"
+  },
+  "url": "https://watertribe.tech/card_reader",
+  "support": "https://support.watertribe.com",
+  "provides": [
+    {
+      "name": "peripheral_defined_card_reader",
+      "count": 10,
+      "spec": {
+        "meta": {
+          "generated": "2024-02-19"
+        },
+        "url": "https://ravenfire.games/dev/specs/card.json",
+        "version": "1.2.3",
+        "vendor": {
+          "name": "ravenfire",
+          "titles": {
+            "en": "Raven Fire"
+          },
+          "descriptions": {
+            "en": "Raven Fire"
+          },
+          "email": "vendor@ravenfire.games",
+          "url": "https://ravenfire.games",
+          "support": "https://ravenfire.games/dev/support"
+        },
+        "titles": {
+          "en": "Card",
+          "es": "Tarjeta"
+        },
+        "descriptions": {
+          "en": "A card",
+          "es": "Una tarjeta"
+        },
+        "properties": [
+          {
+            "key": "card",
+            "data_type": "String",
+            "optional": true,
+            "titles": {
+              "en": "Card",
+              "es": "Tarjeta"
+            },
+            "descriptions": {
+              "en": "The card",
+              "es": "La tarjeta"
+            }
+          }
+        ],
+        "features": [
+          {
+            "key": "rfid",
+            "titles": {
+              "en": "RFID",
+              "es": "RFID"
+            },
+            "descriptions": {
+              "en": "A card with RFID",
+              "es": "Una tarjeta con RFID"
+            }
+          },
+          {
+            "key": "nfc",
+            "titles": {
+              "en": "NFC",
+              "es": "NFC"
+            },
+            "descriptions": {
+              "en": "A card with NFC",
+              "es": "Una tarjeta con NFC"
+            }
+          },
+          {
+            "key": "facing",
+            "titles": {
+              "en": "Facing",
+              "es": "Orientación"
+            },
+            "descriptions": {
+              "en": "The facing of the card",
+              "es": "La orientación de la tarjeta"
+            },
+            "properties": [
+              {
+                "key": "facing",
+                "data_type": "String",
+                "enumerations": [
+                  {
+                    "String": "up"
+                  },
+                  {
+                    "String": "down"
+                  }
+                ],
+                "titles": {
+                  "en": "Facing",
+                  "es": "Orientación"
+                },
+                "descriptions": {
+                  "en": "Which direction the card is facing",
+                  "es": "En qué dirección está orientada la tarjeta"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "peripheral_defined_dice_pad",
+      "count": 1,
+      "spec": {
+        "meta": {
+          "generated": "2024-02-19"
+        },
+        "url": "https://ravenfire.games/dev/specs/dice.json",
+        "version": "4.5.6",
+        "vendor": {
+          "name": "ravenfire",
+          "titles": {
+            "en": "Raven Fire"
+          },
+          "descriptions": {
+            "en": "Raven Fire"
+          },
+          "email": "vendor@ravenfire.games",
+          "url": "https://ravenfire.games",
+          "support": "https://ravenfire.games/dev/support"
+        },
+        "titles": {
+          "en": "Dice Pad"
+        },
+        "descriptions": {
+          "en": "A place to roll dice"
+        },
+        "properties": [
+          {
+            "key": "total",
+            "data_type": "Integer",
+            "titles": {
+              "en": "Total"
+            },
+            "descriptions": {
+              "en": "Total current value rolled. 0 if no dice are present"
+            }
+          }
+        ],
+        "features": [
+          {
+            "key": "d6",
+            "titles": {
+              "en": "D6"
+            },
+            "descriptions": {
+              "en": "The Values of the D6 dice"
+            },
+            "properties": [
+              {
+                "key": "value",
+                "titles": {
+                  "en": "D6 Value"
+                },
+                "descriptions": {
+                  "en": "Value of the D6 Die, one value per collection element"
+                },
+                "data_type": "Integer",
+                "collection": true
+              }
+            ]
+          },
+          {
+            "key": "d10",
+            "titles": {
+              "en": "D10"
+            },
+            "descriptions": {
+              "en": "The Values of the D10 dice"
+            },
+            "properties": [
+              {
+                "key": "value",
+                "titles": {
+                  "en": "D10 Value"
+                },
+                "descriptions": {
+                  "en": "Value of the D10 Die, one value per collection element"
+                },
+                "data_type": "Integer",
+                "collection": true
+              }
+            ]
+          },
+          {
+            "key": "d20",
+            "titles": {
+              "en": "D20"
+            },
+            "descriptions": {
+              "en": "The Values of the D20 dice"
+            },
+            "properties": [
+              {
+                "key": "value",
+                "titles": {
+                  "en": "D20 Value"
+                },
+                "descriptions": {
+                  "en": "Value of the D20 Die, one value per collection element"
+                },
+                "data_type": "Integer",
+                "collection": true
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "meta": {
+    "generated": "2024-02-19"
+  },
+  "version": "1.2.3",
+  "url": "https://ravenfire.games/dev/specs/card.json",
+  "vendor": {
+    "name": "ravenfire",
+    "titles": {
+      "en": "Raven Fire"
+    },
+    "descriptions": {
+      "en": "Raven Fire"
+    },
+    "email": "vendor@ravenfire.games",
+    "url": "https://ravenfire.games",
+    "support": "https://ravenfire.games/dev/support"
+  },
+  "titles": {
+    "en": "Card",
+    "es": "Tarjeta"
+  },
+  "descriptions": {
+    "en": "A card",
+    "es": "Una tarjeta"
+  },
+  "properties": [
+    {
+      "key": "card",
+      "data_type": "String",
+      "optional": true,
+      "titles": {
+        "en": "Card",
+        "es": "Tarjeta"
+      },
+      "descriptions": {
+        "en": "The card",
+        "es": "La tarjeta"
+      }
+    }
+  ],
+  "features": [
+    {
+      "key": "rfid",
+      "titles": {
+        "en": "RFID",
+        "es": "RFID"
+      },
+      "descriptions": {
+        "en": "A card with RFID",
+        "es": "Una tarjeta con RFID"
+      }
+    },
+    {
+      "key": "nfc",
+      "titles": {
+        "en": "NFC",
+        "es": "NFC"
+      },
+      "descriptions": {
+        "en": "A card with NFC",
+        "es": "Una tarjeta con NFC"
+      }
+    },
+    {
+      "key": "facing",
+      "titles": {
+        "en": "Facing",
+        "es": "Orientación"
+      },
+      "descriptions": {
+        "en": "The facing of the card",
+        "es": "La orientación de la tarjeta"
+      },
+      "properties": [
+        {
+          "key": "facing",
+          "data_type": "String",
+          "enumerations": [
+            {
+              "String": "up"
+            },
+            {
+              "String": "down"
+            }
+          ],
+          "titles": {
+            "en": "Facing",
+            "es": "Orientación"
+          },
+          "descriptions": {
+            "en": "Which direction the card is facing",
+            "es": "En qué dirección está orientada la tarjeta"
+          }
+        }
+      ]
+    }
+  ]
+}

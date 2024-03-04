@@ -1,23 +1,26 @@
 //! Traits and common data types used for manifests.
 //!
 //! Manifests live in their various crates (peripherals, games, etc).
+
+#[macro_use]
+extern crate derive_builder;
+
 use std::collections::HashMap;
-use std::fmt::{Display, Formatter};
+// use std::fmt::Display;
 use std::path::PathBuf;
 
-use getset::{Getters, Setters};
-use serde::{Deserialize, Serialize};
-
+use common::data::key::ValidKey;
 use common::data::serialization::{Streamable as StreamableTrait, Tomlable as TomlableTrait};
-use common::data::ValidKey;
-use common::isolang::Language;
-use common::macros::{Jsonable, Streamable, Tomlable};
-use common::url::Url;
+
+// use serde::{Deserialize, Serialize};
 
 pub mod examples;
 pub mod game;
+mod meta;
 pub mod peripheral;
 pub mod range;
+mod specs;
+mod vendor;
 
 // TODO: [implementation] Is this the best place for these
 /// The game defined name of a player's io
@@ -42,10 +45,6 @@ pub type PlayerType = String;
 pub type PlayerIndex = u8;
 
 // ^^ TODO: [implementation] Is this the best place for these
-
-/// Represents a key/value pair of a language code and a string.
-/// Used for storing localized strings. For things like names, descriptions, etc.
-pub type LanguageMap = HashMap<Language, String>;
 
 /// Trait for representing a manifest with serialization and streaming capabilities.
 ///
@@ -89,39 +88,5 @@ pub trait Manifest: TomlableTrait + StreamableTrait {
     /// * `Err(())` if the save operation fails.
     fn save(&self, _path: PathBuf) -> Result<(), ()> {
         todo!("TODO: [manifests] Implement saving of manifests");
-    }
-}
-
-/// Represents a vendor who creates a game, peripheral, playable, or other component.
-#[derive(
-    Debug,
-    Serialize,
-    Deserialize,
-    PartialEq,
-    Tomlable,
-    Jsonable,
-    Streamable,
-    Getters,
-    Setters,
-    Clone,
-)]
-#[getset(get = "pub")]
-pub struct Vendor {
-    name: String,
-    url: Url,
-}
-
-impl Display for Vendor {
-    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{}", self.name)
-    }
-}
-
-impl Vendor {
-    pub fn new(name: &str, url: &str) -> Self {
-        Vendor {
-            name: name.into(),
-            url: Url::parse(url).expect("Failed to parse URL"),
-        }
     }
 }
