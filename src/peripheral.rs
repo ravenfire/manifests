@@ -27,11 +27,14 @@ use crate::vendor::Vendor;
 )]
 #[getset(get = "pub", set = "pub")]
 pub struct PeripheralManifest {
+    // rf.whatever
+    key: ValidKey,
+
     /// Semantic version of the hardware and software
     /// "1.23.01-alpha"
     version: Version,
 
-    // rf.whatever
+    // Serial number of this device
     uuid: ValidKey,
 
     /// Vendor of the device
